@@ -1,0 +1,39 @@
+My CookBook
+
+SUBTITULO BASE
+Seu organizador de projetos completo.
+
+SUBTEXTO BASE
+A My GuideBook nasceu de uma equipe apaixonada por comida e cozinha, para facilitar a criação e organização de receitas de tanto para uso individual como para empresas produzirem seus acervos. 
+
+CARROUSSEL 1
+Organize suas receitas
+
+Organize insumos e modo de preparo de uma maneita simples e intuitiva!
+
+
+CARROUSSEL 2
+Organize seu time
+
+Administre informações dos colaboradores e organize suas produtividades e funções.
+
+
+CARROUSSEL 3
+Organize seus projetos
+
+Selecione suas receitas especificas e unifique em livros personalizados!
+
+
+TESTEMUNHO 1
+Felipe - CEO da My Cookbook
+
+"Foi pela paixão em cozinhar que teve a iniciativa de tornar a publicação de receitas organizadas e eficiente para todos!"
+
+TESTEMUNHO 2
+Isabel - Editora Chef na Mesa
+
+"Pela dificuldade de organizar minhas publicações em minha editora, usar o My CookBook deixou as publicações das receitas dos colaboradores mais intuitiva e simples"
+
+TESTEMUNHO 3
+Janaina - Estudante
+"Queria achar um lugar para que eu guardasse todas as minhas receitas favoritas. A My CookBook ajuda a guardar para que eu fique com as receitas a qualquer hora!"
