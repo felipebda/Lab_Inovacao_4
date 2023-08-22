@@ -45,7 +45,7 @@
         $lista = $query->fetchAll(PDO::FETCH_ASSOC);
         if(count($lista) == 0)
         {
-            throw new Exeption("Erro na busca do funcionario no login", 1);
+            throw new Exception("Erro na busca do funcionario no login", 1);
         }
 
         $idFunc = $lista[0]["idFunc"];
@@ -77,7 +77,7 @@
         }
         catch(Exception $e)
         {
-            header("Location: exe.php");
+            header("Location: login.php");
             echo "Excecao capturada: ".$e->getMessage()."\n";
             exit();
         } 
