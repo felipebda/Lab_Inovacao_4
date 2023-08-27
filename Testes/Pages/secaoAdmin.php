@@ -123,7 +123,7 @@
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Adicionar Funcionario</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Funcionario</a></li>
+          <li><a class="dropdown-item" href="consulta_funcionario.php">Consultar Funcionario</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Funcionario</a></li>

@@ -59,9 +59,9 @@
         $senha = $lista[0]["senha"];
 
         // TODO: Fazer um cookie com o id do usuario
-        setcookie('u_email', $email, time()+30);
-        setcookie('u_senha', $senha, time()+30);
-        setcookie('u_idcargo', $idcargo, time()+30);
+        setcookie('u_email', $email, time()+3000);
+        setcookie('u_senha', $senha, time()+3000);
+        setcookie('u_idcargo', $idcargo, time()+3000);
         
         //DIRECIONAR A PAGINA PELO CARGO
         if ($idcargo == 1) 
