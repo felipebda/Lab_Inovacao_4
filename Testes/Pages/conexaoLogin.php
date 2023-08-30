@@ -1,6 +1,6 @@
 <?php
     //Variaveis de conexao
-    $dbname = "livro_de_receita";
+    $dbname = "livro_de_receita2";
     $local = "localhost";
     $user = "root";
     $password = "123456";
@@ -37,10 +37,11 @@
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 
-        $query = $pdo->prepare("SELECT * FROM funcionario WHERE email = :e AND senha = :s");
+        $query = $pdo->prepare("SELECT * FROM funcionario WHERE emailFunc = :e AND senha = :s");
         $query->bindValue(":e", $email);
         $query->bindValue(":s", $senha);
         $query->execute();
+        //var_dump ($query);
 
         $lista = $query->fetchAll(PDO::FETCH_ASSOC);
         if(count($lista) == 0)
@@ -55,7 +56,7 @@
         $salario = $lista[0]["salario"];
         $idcargo = $lista[0]["idCargo"];
         $nome_fantasia = $lista[0]["nome_fantasia"];
-        $email = $lista[0]["email"];
+        $email = $lista[0]["emailFunc"];
         $senha = $lista[0]["senha"];
 
         // TODO: Fazer um cookie com o id do usuario

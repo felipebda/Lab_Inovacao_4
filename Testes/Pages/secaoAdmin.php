@@ -1,6 +1,6 @@
 <?php
   //Variaveis de conexao
-  $dbname = "livro_de_receita";
+  $dbname = "livro_de_receita2";
   $local = "localhost";
   $user = "root";
   $password = "123456";
@@ -46,7 +46,7 @@
     $salario = $lista_cookie[0]["salario"];
     $idcargo = $lista_cookie[0]["idCargo"];
     $nome_fantasia = $lista_cookie[0]["nome_fantasia"];
-    $email = $lista_cookie[0]["email"];
+    $email = $lista_cookie[0]["emailFunc"];
     $senha = $lista_cookie[0]["senha"];
   }
 
@@ -122,7 +122,7 @@
           Funcionarios
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Funcionario</a></li>
+          <li><a class="dropdown-item" href="cadastroFuncionario.php">Adicionar Funcionario</a></li>
           <li><a class="dropdown-item" href="consulta_funcionario.php">Consultar Funcionario</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
