@@ -1,9 +1,9 @@
 <?php
 //Variaveis de conexao
-    $dbname = "livro_de_receita";
+    $dbname = "livro_de_receita2";
     $local = "localhost";
-    $user = "root";
-    $password = "123456";
+    $user = "exemplo_usuario";
+    $password = "exemplo_senha";
 
 //CONEXAO COM BANCO DE DADOS
 try

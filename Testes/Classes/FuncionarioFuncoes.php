@@ -7,7 +7,7 @@ class FuncionarioFuncoes {
                             $this->pdo = $pdo;
                             
               }
-public function cadastrar(Funcionario $funcionario) {
+              public function cadastrar(Funcionario $funcionario) {
 
               $insert = "INSERT INTO livro_de_receita.funcionario 
               (rg, nome, dt_ingr, salario, idCargo, nome_fantasia, emailFunc, senha, imagem)

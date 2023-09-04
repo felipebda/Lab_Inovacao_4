@@ -1,9 +1,5 @@
 <?php
-  //Variaveis de conexao
-  $dbname = "livro_de_receita2";
-  $local = "localhost";
-  $user = "root";
-  $password = "123456";
+  include_once "conexao.php";
 
   //Variaveis usuario
   $idFunc = 0;
@@ -17,16 +13,6 @@
   $senha = "";
 
   $nome_cargo = "";
-
-  //CONEXAO COM BANCO DE DADOS
-  try
-  {
-      $pdo = new PDO("mysql:dbname=".$dbname.";host=".$local."",$user,$password);
-  }
-  catch(PDOException $e)
-  {
-      echo "Erro ao conectar com banco de dados: ".$e->getMessage();
-  }
 
   //ACESSO VIA COOKIE
   if(isset($_COOKIE["u_email"]) && !isset($_POST["tipo_acesso"]))
@@ -140,8 +126,8 @@
           Cargos
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Cargo</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Cargo</a></li>
+          <li><a class="dropdown-item" href="cadastroCargo.php">Adicionar Cargo</a></li>
+          <li><a class="dropdown-item" href="consultaCargo.php">Consultar Cargo</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item bg-danger text-light" href="#">Excluir cargo</a></li>

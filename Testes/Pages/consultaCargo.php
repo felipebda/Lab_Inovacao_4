@@ -1,25 +1,18 @@
 <?php
     include_once "conexao.php";
-
+    
     //Variaveis usuario
-    $idFunc = 0;
-    $rg = "";
-    $nome = "";
-    $dt_ingr = "";
-    $salario = 0;
-    $idcargo = 0;
-    $nome_fantasia = "";
-    $email = "";
-    $senha = "";
-  
-    $nome_cargo = "";
+    $idCargo = 0;
+    $descricao = "";
 
     //CASO MUDAR QUERY, ATUALIZAR TABELA HTML APROPRIADAMENTE
-    $sql = "SELECT funcionario.idFunc, funcionario.nome, cargo.descicao as cargo, funcionario.nome_fantasia from funcionario inner join cargo on funcionario.idCargo = cargo.idCargo;";
+    $sql = "SELECT * FROM cargo";
     $query= $pdo->query($sql);
 
-?>
 
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,15 +20,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Document</title>
+    <title>My CookBook</title>
     <style>
         .color_red{
             color:red;
         }
+        .configbutton{
+            border:none;
+            background-color:transparent;
+        }
     </style>
 </head>
 <body>
-
     <!-- HEADER -->
     <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
@@ -56,25 +52,23 @@
       </header>
     </div>
     <!--END HEADER -->
-
+    
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Consulta - Funcionarios</h3>
+            <h3>Consulta - Cargos</h3>
             </div>
             <hr>
         </div>
-    </div>
+    </div> 
 
     <!--Table-->
     <div class="container">
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">Id Funcionario</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cargo</th>
-                <th scope="col">Nome Fantasia</th>
+                <th scope="col">Id Cargo</th>
+                <th scope="col">Descrição do Cargo</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 
@@ -85,27 +79,27 @@
                     while($row = $query->fetch(PDO::FETCH_ASSOC))
                     {
                         echo '<tr>';
-                        echo '<td>'.$row['idFunc'].'</td>';
-                        echo '<td>'.$row['nome'].'</td>';
-                        echo '<td>'.$row['cargo'].'</td>';
-                        echo '<td>'.$row['nome_fantasia'].'</td>';
+                        echo '<td>'.$row['idCargo'].'</td>';
+                        echo '<td>'.$row['descicao'].'</td>';
                         
                         ?>
-                            <!-- ACESSAR CONTATO-->
+                            <!-- ACESSAR CARGO-->
                             <td scope="col"><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
                             </a>
                             </td>
 
-                            <!--EXCLUIR CONTATO -->
-                            <td scope="col"><a href="">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                            </svg>
-
-                            </a>
+                            <!--EXCLUIR CARGO -->
+                            <td scope="col">
+                                <form action="excluirCargo.php" method="POST">
+                                    <?php //echo $row['idCargo']; ?>
+                                    <input type="hidden" name="excluirCargo" value=<?php echo '"'.$row['idCargo'].'"'; ?>>
+                                    <button type="submit" class="configbutton"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">
+                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    </svg></span></button>                                   
+                                </form>
                             </td>
                         <?php
                         echo '</tr>';
@@ -116,10 +110,9 @@
         </table>
 
     </div>
-    <!--End Table -->
+    <!--End Table -->    
 
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
 </body>
 </html>

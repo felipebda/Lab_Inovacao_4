@@ -49,15 +49,6 @@
                 <label for="floatingPassword">Senha</label>
                 </div>
 
-                <!-- CHECKBOX DE LEMBRAR LOGIN ----- DESCARTAR
-                <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Lembrar log-in
-                </label>
-                </div>
-                -->
-
                 <input type="hidden" name="tipo_acesso" value="login">
 
                 <button class="btn btn-primary w-25 py-2 mt-3" type="submit">Acessar</button>
