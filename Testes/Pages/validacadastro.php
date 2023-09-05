@@ -9,12 +9,6 @@ if (!isset($_POST["cadastrar"])) {
     require "../Classes/Funcionario.php";
     require "../Classes/FuncionarioFuncoes.php";
 
-    if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
-        $imagem = "../Images/usuarios/" . $_FILES["imagem"]["name"];
-        move_uploaded_file($_FILES["imagem"]["tmp_name"], $imagem);
-    } else {
-        $imagem = "imagem em branco!";
-    }
 
     //CRIANDO NOVO OBJETO FUNCIONARIO:
     $funcionario = new Funcionario(
@@ -27,10 +21,13 @@ if (!isset($_POST["cadastrar"])) {
         $_POST['nome_fantasia'],
         $_POST['email'],
         $_POST['senha'],
-        //erro aqui na imagem
-        $_POST['imagem']
 
     );
+        //SETTANDO A IMAGEM E MOVENDO PARA O DIRETÓRIO:
+        if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
+            $funcionario -> setImagem(uniqid().$_FILES['imagem']['name']);
+            move_uploaded_file($_FILES["imagem"]["tmp_name"], $funcionario->getImagemDiretorio());        
+        } 
 
     //INSTANCIANDO O OBJ COM CONEXAO PDO E EXECUTANDO FUNCAO DE CADASTRAR
     $funcionarioFuncao = new FuncionarioFuncoes($pdo);

@@ -32,7 +32,7 @@
         $salario = $lista_cookie[0]["salario"];
         $idcargo = $lista_cookie[0]["idCargo"];
         $nome_fantasia = $lista_cookie[0]["nome_fantasia"];
-        $email = $lista_cookie[0]["email"];
+        $email = $lista_cookie[0]["emailFunc"];
         $senha = $lista_cookie[0]["senha"];
     }
 ?>

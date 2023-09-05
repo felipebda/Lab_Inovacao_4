@@ -8,11 +8,11 @@ class Funcionario {
               private float $salario;
               private int $idCargo;
               private string $nome_fantasia;
-              private string $emailFunc;
+              private string $email;
               private string $senha;
               private string $imagem;
 
-             public function __construct(?int $idFunc, string $rg, string $nome, string $dt_ingr, float $salario,  int $idCargo, string $nome_fantasia, string $emailFunc, string $senha ,string $imagem){
+              public function __construct(?int $idFunc, string $rg, string $nome, string $dt_ingr, float $salario,  int $idCargo, string $nome_fantasia, string $email, string $senha, string $imagem = 'perfil.jpg'){
               $this->idFunc = $idFunc;
               $this->rg = $rg;
               $this->nome = $nome;
@@ -20,13 +20,13 @@ class Funcionario {
               $this->salario = $salario;
               $this->idCargo = $idCargo;
               $this->nome_fantasia = $nome_fantasia;
-              $this->emailFunc = $emailFunc;
+              $this->email = $email;
               $this->senha = $senha;
               $this->imagem = $imagem;
 
              } 
              
-             public function getIdFunc() : ?int {
+             public function getIdFunc() : int {
               return $this->idFunc;
              }
 
@@ -55,8 +55,8 @@ class Funcionario {
              }
 
              public function getEmail() : string {
-              return $this->emailFunc;
-             }
+              return $this->email;
+            }
 
              public function getSenha() : string {
               return $this->senha;
@@ -66,6 +66,13 @@ class Funcionario {
               return $this->imagem;
              }
 
+             public function getImagemDiretorio() : string {
+                return "../Images/usuarios/".$this->imagem;
+               }
+  
+               public function setImagem(string $imagem): void {
+                $this->imagem = $imagem;
+               }
 }
 
 ?>

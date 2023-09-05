@@ -144,15 +144,79 @@
           Ingredientes
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Ingredientes</a></li>
+          <li><a class="dropdown-item" href="#">Adicionar Ingrediente</a></li>
           <li><a class="dropdown-item" href="#">Consultar Ingredientes</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Ingredientes</a></li>
+          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Ingrediente</a></li>
         </ul>
       </div>
 
+      <!--MEDIDA -->
+      <svg id="Layer_1"  viewBox="0 0 24 24" width="35" height="35" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m21 2h-4.54a5.973 5.973 0 0 0 -8.92 0h-4.54a3 3 0 0 0 -3 3v19h24v-19a3 3 0 0 0 -3-3zm-9 0a4 4 0 0 1 4 4v1h-3.382l1.282-2.553-1.79-.894-1.728 3.447h-2.382v-1a4 4 0 0 1 4-4zm10 20h-20v-17a1 1 0 0 1 1-1h3.35a5.976 5.976 0 0 0 -.35 2v3h12v-3a5.976 5.976 0 0 0 -.35-2h3.35a1 1 0 0 1 1 1z"/></svg>      
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
+          Medidas
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Adicionar Medida</a></li>
+          <li><a class="dropdown-item" href="#">Consultar Medidas</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Medida</a></li>
+        </ul>
+      </div>      
+
+      
+    
+      <!--RECEITA -->
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M0,6A5.006,5.006,0,0,1,5,1a4.939,4.939,0,0,1,2.713.8,6,6,0,0,1,8.574,0A4.939,4.939,0,0,1,19,1a5,5,0,0,1,1,9.9V18H4V10.9A5.008,5.008,0,0,1,0,6ZM4,20v4H20V20Z"/></svg>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
+          Receitas
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Adicionar Receita</a></li>
+          <li><a class="dropdown-item" href="#">Consultar Receitas</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Receita</a></li>
+        </ul>
+      </div> 
+      
+      <!--CATEGORIA -->
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M24,22a1,1,0,0,1-1,1H1a1,1,0,0,1,0-2H23A1,1,0,0,1,24,22ZM2,19H22a1,1,0,0,0,1-1V17A11.01,11.01,0,0,0,13,6.051V4.723a2,2,0,1,0-2,0V6.051A11.01,11.01,0,0,0,1,17v1A1,1,0,0,0,2,19Z"/></svg>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
+          Categorias
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Adicionar Categoria</a></li>
+          <li><a class="dropdown-item" href="#">Consultar Categorias</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Categoria</a></li>
+        </ul>
+      </div> 
+
+      <!--RESTAURANTES -->
+      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M22,10a12.64,12.64,0,0,1-5,9.775V23a1,1,0,0,1-2,0V2A1.9,1.9,0,0,1,16.131.217a2.194,2.194,0,0,1,2.356.459A13.474,13.474,0,0,1,22,10ZM11,0a1,1,0,0,0-1,1V7A3,3,0,0,1,8,9.816V1A1,1,0,0,0,6,1V9.816A3,3,0,0,1,4,7V1A1,1,0,0,0,2,1V7a5.009,5.009,0,0,0,4,4.9V23a1,1,0,0,0,2,0V11.9A5.009,5.009,0,0,0,12,7V1A1,1,0,0,0,11,0Z"/></svg>
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
+          Restaurantes
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Adicionar Restaurante</a></li>
+          <li><a class="dropdown-item" href="#">Consultar Restaurantes</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Restaurante</a></li>
+        </ul>
+      </div> 
     </div>
+
+
+
     <!-- END INFORMATION DROPBOX -->
 
 

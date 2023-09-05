@@ -6,6 +6,7 @@
     <title>My CookBook - Seu acervo de receitas perto de você </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="Style/home.css">
+    <link rel="shortcut icon" href="Icons/book.svg" type="image/x-icon">
 
 </head>
 <body>
@@ -20,12 +21,17 @@
         </a>
 
         <ul class="nav nav-pills">
-          <li class="nav-item"><a href="index1.php" class="nav-link" aria-current="page">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-          <li class="nav-item"><a href="Pages/login.php" class="nav-link active">Acesso</a></li>
-        </ul>
+        <li class="nav-item"><a href="index1.php" class="nav-link text-dark" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-dark">Editora</a></li>
+        <li class="nav-item"><a href="#" class="nav-link text-dark">Contato</a></li>
+        <button type="button" class="btn btn-dark dropdown"><a href="#" class="d-block link-light text-decoration-none" data-bs-toggle="dropdown" aria-expanded="false">Acesso</a></li>
+          <ul class="dropdown-menu text-small">
+            <li><a  class="dropdown-item" href="Pages/login.php">Entrar</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="Pages/cadastroFuncionario.php">Cadastro</a></li>
+          </ul>
+        </button>
+      </ul>
       </header>
     </div>
     <!--END HEADER -->
@@ -101,14 +107,14 @@
         <p><a class="btn btn-secondary" href="#">View details »</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-      <img src="Images/bel.jpg" class="rounded-circle" height="150" alt="pessoa">
+      <img src="Images/ale.jpg" class="rounded-circle" height="150" alt="pessoa">
 
-        <h4>Isabel - Editora Chef na Mesa</h4>
+      <h4>Alexandra - Editora Chefe da Boca</h4>
         <p>"Pela dificuldade de organizar minhas publicações em minha editora, usar o My CookBook deixou as publicações das receitas dos colaboradores mais intuitiva e simples."</p>
         <p><a class="btn btn-secondary" href="#">View details »</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-      <img src="Images/nina.jpg" class="rounded-circle" height="150" alt="pessoa">
+      <img src="Images/nina.jpg" class="rounded-circle" width="150px" height="150px" alt="pessoa">
 
         <h4>Janaina - Estudante</h4>
         <p>"Queria achar um lugar para que eu guardasse todas as minhas receitas favoritas. A My CookBook ajuda a guardar para que eu fique com as receitas a qualquer hora!"</p>
@@ -143,17 +149,14 @@
     <!-- END PARCEIROS -->
 
     <!--FOOTER -->
-    <footer class="py-3 my-4">
-      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
-        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
-      </ul>
-      <p class="text-center text-muted">© 2023 My CookBook, Inc</p>
-    </footer>
-    <!--END FOOTER -->
+    <footer class="py-3 my-4" >
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Editora</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2023 My CookBook, Inc</p>
+  </footer>
 
     <!--BOOTSTRAP JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
