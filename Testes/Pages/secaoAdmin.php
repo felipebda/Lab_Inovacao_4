@@ -144,8 +144,8 @@
           Ingredientes
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Ingrediente</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Ingredientes</a></li>
+          <li><a class="dropdown-item" href="cadastroIngrediente.php">Adicionar Ingrediente</a></li>
+          <li><a class="dropdown-item" href="consultaIngrediente.php">Consultar Ingredientes</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Ingrediente</a></li>
