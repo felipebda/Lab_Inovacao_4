@@ -55,7 +55,7 @@ if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
         <p class="h3 text-dark">CADASTRO DE FUNCIONÁRIO</p>
         </section>
         <section class="container-fluid m-0 p-0 text-center pt-4">
-          <form action="validacadastro.php" method="POST" enctype="multipart/form-data">
+          <form action="../Validation/validaFuncionario.php" method="POST" enctype="multipart/form-data">
 
           <label id="rg" for="rg" style="font-size: 12px; font-weight: bold;">INFORME O RG:
               <input class="form-control text-center mt-2" type="text" name="rg" style="width: 350px;" placeholder="xxxxxxx" required>
@@ -78,8 +78,8 @@ if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
               <select type="select" for="idCargo" name="idCargo" class="form-control text-center mt-2" style="width: 350px;" required>
                 <option disabled selected>Selecione o cargo</option>
                 <option value="2">Cozinheiro</option>
-                <option value="4">Editor</option>
                 <option value="3">Degustador</option>
+                <option value="4">Editor</option>
                 </select>
             </label><br><br>
 
@@ -98,7 +98,9 @@ if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
 
             <label for="imagem" id="imagem"  style="font-size: 12px; font-weight: bold;">SELECIONE UMA IMAGEM:
               <input type="file" name="imagem" accept="image/*" class="form-control mt-2">
-            </label><br><br>
+            </label><br><br> 
+            <label for="ativo">Ativo</label>
+            <input type="radio" name="ativo" id="ativo" value = "1" checked>
 
             <div id="btt" class="my-4">
               <button type="submit" name="cadastrar" class="btn btn-outline-dark">Cadastrar</button>

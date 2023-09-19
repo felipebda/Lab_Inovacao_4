@@ -100,11 +100,11 @@
           Funcionarios
         </button>
         <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="consultaFuncionario.php">Adicionar Funcionario</a></li>
+        <li><a class="dropdown-item" href="cadastroFuncionario.php">Adicionar Funcionario</a></li>
           <li><a class="dropdown-item" href="consultaFuncionario.php">Consultar Funcionario</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="excluirFuncionario.php">Excluir Funcionario</a></li>
+          <li><a class="dropdown-item bg-danger text-light" href="consultaFuncionario.php">Excluir Funcionario</a></li>
         </ul>
       </div>
 
