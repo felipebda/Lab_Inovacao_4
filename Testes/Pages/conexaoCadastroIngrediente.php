@@ -1,5 +1,5 @@
 <?php 
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
 
     $novoIngrediente = $_POST["nome_ingrediente"];
     $descricaoIngrediete = $_POST["desc_ingrediente"];

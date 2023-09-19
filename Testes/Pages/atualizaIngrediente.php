@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
 
     //PEGAR ID
     $idIngrediente = intVal($_POST["atualizaCargo"]);

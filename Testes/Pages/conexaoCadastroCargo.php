@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
 
     $novoCargo = $_POST["nome_cargo"];
 

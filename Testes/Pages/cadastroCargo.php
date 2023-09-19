@@ -1,5 +1,6 @@
 <?php
-
+include_once "../Connection/conexao.php";
+//require "../Classes/Cargo.php";
 ?>
 
 <!DOCTYPE html>

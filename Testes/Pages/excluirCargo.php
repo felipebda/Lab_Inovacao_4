@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
 
     $idCargo = intval($_POST['excluirCargo']);
     //echo $idCargo;

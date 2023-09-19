@@ -1,40 +1,7 @@
 <?php
-    include_once "../Connection/conexao.php";
-
-      //Variaveis usuario
-    $idFunc = 0;
-    $rg = "";
-    $nome = "";
-    $dt_ingr = "";
-    $salario = 0;
-    $idcargo = 0;
-    $nome_fantasia = "";
-    $email = "";
-    $senha = "";
-
-    $nome_cargo = "";
-
-    //ACESSO VIA COOKIE
-    if(isset($_COOKIE["u_email"]) && !isset($_POST["tipo_acesso"]))
-    {
-        $id_func = intval($_COOKIE['u_idcargo']);
-
-        $q_cookie = $pdo->prepare("SELECT * FROM funcionario WHERE idCargo = :id");
-        $q_cookie->bindValue(":id", $id_func);
-        $q_cookie->execute();
-
-        $lista_cookie = $q_cookie->fetchAll(PDO::FETCH_ASSOC);
-        
-        $idFunc = $lista_cookie[0]["idFunc"];
-        $rg = $lista_cookie[0]["rg"];
-        $nome = $lista_cookie[0]["nome"];
-        $dt_ingr = $lista_cookie[0]["dt_ingr"];
-        $salario = $lista_cookie[0]["salario"];
-        $idcargo = $lista_cookie[0]["idCargo"];
-        $nome_fantasia = $lista_cookie[0]["nome_fantasia"];
-        $email = $lista_cookie[0]["emailFunc"];
-        $senha = $lista_cookie[0]["senha"];
-    }
+include_once "../Connection/conexao.php";
+require "../Classes/Categoria.php";
+require "../Classes/CategoriaFuncoes.php";
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +9,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My CookBook - Seu acervo de receitas perto de você </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="Style/home.css">
+    <title>My CookBook</title>
 </head>
-
 <body>
     <!-- HEADER -->
     <div class="container">
@@ -67,24 +32,41 @@
         </ul>
       </header>
     </div>
-    <!--END HEADER -->  
-
+    <!--END HEADER -->
     
-    <div class="container">
-      <div class="row">
-        <div class= "col-3">
-          <?php echo "Bem vindo, ". $nome; ?>
+    <div class= "container mt-3">
+        <div class="row">
+            <div class = col-2>
+            <h3>Cadastro de Categoria</h3>
+            </div>
+            <hr>
         </div>
-        <div class= "col-7" ></div>
-        <div class= "col-2"> <?php echo "Cargo: Cozinheiro"; ?></div>
-      </div>
+    </div>    
 
+    <!-- JANELA CADASTRO  -->
+    <div class="container col-4">
+        <main class="form-signin w-100 m-auto">
+            <form action="../Validation/validaCategoria.php" method="post">
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-clipboard2" viewBox="0 0 16 16">
+            <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
+            <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
+            </svg>               
+              <h1 class="h3 mb-3 fw-normal">Informe nome da nova categoria</h1>
+
+                <div class="form-floating rounded-top">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="descricao">
+                <label for="floatingInput">Nome da categoria </label>
+                </div>
+
+                <input type="hidden" name="tipo_cadastro" value="categoria">
+
+                <button type="submit" name="cadastrar" class="btn btn-primary w-25 py-2 mt-3" >Cadastrar</button>
+            </form>
+            <a href="secaoAdmin.php"><button class="btn btn-success w-25 py-2 mt-3" >Voltar</button></a>
+        </main>
     </div>
+    <!-- FIM JANELA CADASTRO -->    
 
-
-
-    <!--BOOTSTRAP JAVASCRIPT-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
-

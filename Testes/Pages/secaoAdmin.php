@@ -1,5 +1,5 @@
 <?php
-  include_once "conexao.php";
+  include_once "../Connection/conexao.php";
 
   //Variaveis usuario
   $idFunc = 0;
@@ -37,14 +37,6 @@
   }
 
   
-  
- 
-
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,11 +100,11 @@
           Funcionarios
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="cadastroFuncionario.php">Adicionar Funcionario</a></li>
-          <li><a class="dropdown-item" href="consulta_funcionario.php">Consultar Funcionario</a></li>
+        <li><a class="dropdown-item" href="consultaFuncionario.php">Adicionar Funcionario</a></li>
+          <li><a class="dropdown-item" href="consultaFuncionario.php">Consultar Funcionario</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Funcionario</a></li>
+          <li><a class="dropdown-item bg-danger text-light" href="excluirFuncionario.php">Excluir Funcionario</a></li>
         </ul>
       </div>
 
@@ -159,7 +151,7 @@
           Medidas
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Medida</a></li>
+        <li><a class="dropdown-item" href="cadastroMedida.php">Adicionar Medida</a></li>
           <li><a class="dropdown-item" href="#">Consultar Medidas</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
@@ -191,7 +183,7 @@
           Categorias
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Categoria</a></li>
+        <li><a class="dropdown-item" href="cadastroCategoria.php">Adicionar Categoria</a></li>
           <li><a class="dropdown-item" href="#">Consultar Categorias</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>

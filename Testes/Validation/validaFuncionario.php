@@ -5,7 +5,7 @@ if (!isset($_POST["cadastrar"])) {
     echo "erro no upload de dados";
 } else {
 
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
     require "../Classes/Funcionario.php";
     require "../Classes/FuncionarioFuncoes.php";
 
@@ -21,6 +21,7 @@ if (!isset($_POST["cadastrar"])) {
         $_POST['nome_fantasia'],
         $_POST['email'],
         $_POST['senha'],
+        $_POST['ativo'],
 
     );
         //SETTANDO A IMAGEM E MOVENDO PARA O DIRETÓRIO:

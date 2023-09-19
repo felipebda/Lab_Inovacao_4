@@ -1,5 +1,5 @@
 <?php
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
 
     //Tratamento da informação do formulario coerente ao Banco de dados
     $ExcluirIdCargo = intval($_POST['tipo_excluir']);

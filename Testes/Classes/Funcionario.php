@@ -11,8 +11,9 @@ class Funcionario {
               private string $email;
               private string $senha;
               private string $imagem;
+              private int $ativo;
 
-              public function __construct(?int $idFunc, string $rg, string $nome, string $dt_ingr, float $salario,  int $idCargo, string $nome_fantasia, string $email, string $senha, string $imagem = 'perfil.jpg'){
+              public function __construct(?int $idFunc, string $rg, string $nome, string $dt_ingr, float $salario,  int $idCargo, string $nome_fantasia, string $email, string $senha, int $ativo, string $imagem = 'perfil.jpg'){
               $this->idFunc = $idFunc;
               $this->rg = $rg;
               $this->nome = $nome;
@@ -22,6 +23,7 @@ class Funcionario {
               $this->nome_fantasia = $nome_fantasia;
               $this->email = $email;
               $this->senha = $senha;
+              $this->ativo = $ativo;
               $this->imagem = $imagem;
 
              } 
@@ -72,6 +74,10 @@ class Funcionario {
   
                public function setImagem(string $imagem): void {
                 $this->imagem = $imagem;
+               }
+
+               public function getAtivo() : string {
+                return $this->ativo;
                }
 }
 

@@ -1,5 +1,5 @@
 <?php
-include_once "conexao.php";
+include_once "../Connection/conexao.php";
 require "../Classes/Funcionario.php";
 
 //PUXAR IMAGEM PARA DA PASTA TMP
