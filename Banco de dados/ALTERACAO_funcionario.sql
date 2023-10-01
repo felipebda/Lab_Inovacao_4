@@ -2,6 +2,7 @@
 ALTER TABLE funcionario ADD COLUMN emailFunc varchar(45);
 ALTER TABLE funcionario ADD COLUMN senha varchar(64);
 ALTER TABLE funcionario ADD COLUMN imagem varchar(70);
+ALTER TABLE funcionario ADD COLUMN ativo int;
 
 SHOW GRANTS FOR `receita_apl`@`localhost`;
 

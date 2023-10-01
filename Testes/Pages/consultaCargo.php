@@ -1,12 +1,12 @@
 <?php
-    include_once "conexao.php";
+    include_once "../Connection/conexao.php";
     
     //Variaveis usuario
     $idCargo = 0;
     $descricao = "";
 
     //CASO MUDAR QUERY, ATUALIZAR TABELA HTML APROPRIADAMENTE
-    $sql = "SELECT * FROM cargo";
+    $sql = "SELECT * FROM cargo WHERE ativo = 1";
     $query= $pdo->query($sql);
 
 
@@ -95,9 +95,9 @@
 
                             </td>
 
-                            <!--EXCLUIR CARGO -->
+                            <!--INATIVAR CARGO -->
                             <td scope="col">
-                                <form action="excluirCargo.php" method="POST">
+                                <form action="inativarCargo.php" method="POST">
                                     <?php //echo $row['idCargo']; ?>
                                     <input type="hidden" name="excluirCargo" value=<?php echo '"'.$row['idCargo'].'"'; ?>>
                                     <button type="submit" class="configbutton"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">

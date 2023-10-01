@@ -6,7 +6,7 @@
     $descricao = "";
 
     //CASO MUDAR QUERY, ATUALIZAR TABELA HTML APROPRIADAMENTE
-    $sql = "SELECT * FROM ingrediente";
+    $sql = "SELECT * FROM ingrediente where ativo = 1";
     $query= $pdo->query($sql);
 
 
@@ -100,7 +100,7 @@
 
                             <!--EXCLUIR INGREDIENTE -->
                             <td scope="col">
-                                <form action="excluirIngrediente.php" method="POST">
+                                <form action="inativarIngrediente.php" method="POST">
                                     <?php //echo $row['idCargo']; ?>
                                     <input type="hidden" name="excluirIngrediente" value=<?php echo '"'.$row['idIngrediente'].'"'; ?>>
                                     <button type="submit" class="configbutton"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">

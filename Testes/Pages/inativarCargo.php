@@ -4,7 +4,7 @@
     $idCargo = intval($_POST['excluirCargo']);
     //echo $idCargo;
 
-    //Busca das Informações
+    //Busca das Informações para tabela
     $sql = "SELECT * FROM cargo WHERE idCargo =".$idCargo."";
     $query= $pdo->query($sql);
 
@@ -48,7 +48,7 @@
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Excluir Cargo</h3>
+            <h3>Inativar Cargo</h3>
             </div>
             <hr>
         </div>
@@ -57,12 +57,12 @@
     <!-- JANELA CADASTRO  -->
     <div class="container col-4">
         <main class="form-signin w-100 m-auto">
-            <form action="conexaoExcluirCargo.php" method="post">
+            <form action="../Validation/validaInativarCargo.php" method="post">
             <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-clipboard2" viewBox="0 0 16 16">
             <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
             <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
             </svg>               
-              <h1 class="h3 mb-3 fw-normal">Este cargo será excluído</h1>
+              <h1 class="h3 mb-3 fw-normal">Este cargo será Inativado</h1>
 
                 <div class="form-floating rounded-top">
                 <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nome_cargo" value =<?php echo "'".$resultado["descicao"]."'"; ?> readonly>
@@ -71,7 +71,7 @@
 
                 <input type="hidden" name="tipo_excluir" value =<?php echo "'".$resultado["idCargo"]."'"; ?>>
 
-                <button class="btn btn-danger w-25 py-2 mt-3" type="submit">Excluir</button>
+                <button class="btn btn-danger w-25 py-2 mt-3" type="submit">Inativar</button>
             </form>
             <a href="secaoAdmin.php"><button class="btn btn-success w-25 py-2 mt-3" >Voltar</button></a>
         </main>
