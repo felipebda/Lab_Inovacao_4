@@ -14,8 +14,8 @@ class CargoFuncoes {
               
               public function cadastrar(Cargo $cargo) {
 
-              $insert = "INSERT INTO livro_de_receita2.Cargo
-              (descicao)
+              $insert = "INSERT INTO livro_de_receita2.cargo
+              (descicao, ativo)
               VALUES 
               (?,?)";
               $instrucao = $this->pdo->prepare($insert);

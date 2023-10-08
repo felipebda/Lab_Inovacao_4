@@ -20,7 +20,7 @@ class Cargo {
               }
 
               //funcao para mostrar valor do ativo
-              public function getAtivo() : int{
+              public function getAtivo() : string{
                             return $this->ativo;
               }
 }

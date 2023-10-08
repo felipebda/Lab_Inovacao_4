@@ -99,8 +99,8 @@ if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
             <label for="imagem" id="imagem"  style="font-size: 12px; font-weight: bold;">SELECIONE UMA IMAGEM:
               <input type="file" name="imagem" accept="image/*" class="form-control mt-2">
             </label><br><br> 
-            <label for="ativo">Ativo</label>
-            <input type="radio" name="ativo" id="ativo" value = "1" checked>
+            <!-- <label for="ativo">Ativo</label> -->
+            <input type="hidden" name="ativo" id="ativo" value = "1" checked>
 
             <div id="btt" class="my-4">
               <button type="submit" name="cadastrar" class="btn btn-outline-dark">Cadastrar</button>

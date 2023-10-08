@@ -1,21 +1,22 @@
 <?php
     include_once "../Connection/conexao.php";
-    require "../CLasses/IngredienteFuncoes.php";
+    require "../CLasses/RestauranteFuncoes.php";
 
     //Tratamento da informação do formulario coerente ao Banco de dados
-    $idIngrediente = intval($_POST['tipo_excluir']);
+    $idRestaurante = intval($_POST['tipo_excluir']);
+
 
     if(!isset($_POST["tipo_excluir"]))
     {
-        header("Location: cadastroIngrediente.php");
+        header("Location: cadastroRestaurante.php");
 
     }
     else
     {
 
         //Intanciar ingredienteFuncoes para utilizar a funcao
-        $ingredienteFuncoes = new IngredienteFuncoes($pdo);
-        $ingredienteFuncoes->inativar($idIngrediente);
+        $restauranteFuncoes = new RestauranteFuncoes($pdo);
+        $restauranteFuncoes->inativar($idRestaurante);
 
         header("Location: ../Pages/secaoAdmin.php");
     }

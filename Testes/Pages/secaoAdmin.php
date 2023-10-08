@@ -198,8 +198,8 @@
           Restaurantes
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Adicionar Restaurante</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Restaurantes</a></li>
+          <li><a class="dropdown-item" href="cadastroRestaurante.php">Adicionar Restaurante</a></li>
+          <li><a class="dropdown-item" href="consultaRestaurante.php">Consultar Restaurantes</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Restaurante</a></li>

@@ -6,7 +6,7 @@
     //$novoCargo = $_POST["nome_cargo"];
 
     //INFORMAR ATIVO
-    $ativo = 1;
+    
     
     if(!isset($_POST["tipo_cadastro"]))
     {
@@ -18,8 +18,8 @@
             //CRIANDO NOVO OBJETO cargo:'
             $cargo = new Cargo(
                 null,
-                $_POST['nome_cargo'],
-                $ativo;
+                $_POST['descicao'],
+                $_POST['ativo'],
 
             );
 

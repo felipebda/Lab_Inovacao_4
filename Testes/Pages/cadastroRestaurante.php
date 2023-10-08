@@ -1,7 +1,7 @@
 <?php
-include_once "../Connection/conexao.php";
-require "../Classes/Cargo.php";
-require "../Classes/CargoFuncoes.php";
+
+//echo "entrou";
+
 ?>
 
 <!DOCTYPE html>
@@ -33,41 +33,46 @@ require "../Classes/CargoFuncoes.php";
       </header>
     </div>
     <!--END HEADER -->
-    
+
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Cadastro de Cargos</h3>
+            <h3>Cadastro de Restaurante</h3>
             </div>
             <hr>
         </div>
-    </div>    
+    </div>
 
     <!-- JANELA CADASTRO  -->
     <div class="container col-4">
         <main class="form-signin w-100 m-auto">
-            <form action="../Validation/validaCadastroCargo.php" method="post">
-            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-clipboard2" viewBox="0 0 16 16">
-            <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
-            <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
+            <form action="../Validation/validaCadastroRestaurante.php" method="post">
+            <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-apple" viewBox="0 0 16 16">
+            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
+            <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
             </svg>               
-              <h1 class="h3 mb-3 fw-normal">Informe nome do novo cargo</h1>
+              <h1 class="h3 mb-3 fw-normal">Informe nome do novo restaurante</h1>
 
                 <div class="form-floating rounded-top">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="descicao">
-                <label for="floatingInput">Nome do Cargo </label>
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nome_restaurante">
+                <label for="floatingInput">Nome do Restaurante </label>
                 </div>
 
-                <!--<input type="hidden" name="tipo_cadastro" value="cargo">-->
-                <input type="hidden" name="ativo" id="ativo" value="1" checked>
+                <div class="form-floating rounded-top">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="contato">
+                <label for="floatingInput">Contato </label>
+                </div>
+                
+                <input type="hidden" name="tipo_cadastro" value="ingrediente">
 
-                <button class="btn btn-primary w-25 py-2 mt-3" type="submit" name="tipo_cadastro" >Cadastrar</button>
+                <button class="btn btn-primary w-25 py-2 mt-3" type="submit">Cadastrar</button>
             </form>
             <a href="secaoAdmin.php"><button class="btn btn-success w-25 py-2 mt-3" >Voltar</button></a>
         </main>
     </div>
-    <!-- FIM JANELA CADASTRO -->    
+    <!-- FIM JANELA CADASTRO --> 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  
 </body>
 </html>
