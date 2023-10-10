@@ -98,13 +98,11 @@ if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])) {
 
             <label for="imagem" id="imagem"  style="font-size: 12px; font-weight: bold;">SELECIONE UMA IMAGEM:
               <input type="file" name="imagem" accept="image/*" class="form-control mt-2">
-<<<<<<< HEAD
-            </label><br>
+
             
-=======
             </label><br><br> 
-            <!-- <label for="ativo">Ativo</label> -->
->>>>>>> 3e4fd95fe5ad18a0d1c0b1f05af3f1a5f852469b
+            
+            
             <input type="hidden" name="ativo" id="ativo" value = "1" checked>
 
             <div id="btt" class="my-4">

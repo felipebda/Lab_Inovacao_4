@@ -42,10 +42,6 @@ if (!isset($_POST["cadastrar"])) {
 
 
     echo "Inclusao com sucesso";
-
-<<<<<<< HEAD
-    //header("Location: login.php");
-=======
     header("Location: ../Pages/secaoAdmin.php");
->>>>>>> 3e4fd95fe5ad18a0d1c0b1f05af3f1a5f852469b
+
 }
