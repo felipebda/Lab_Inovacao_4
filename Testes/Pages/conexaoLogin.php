@@ -1,5 +1,7 @@
 <?php
     include_once "../Connection/conexao.php";
+    require "../Classes/FuncionarioFuncoes.php";
+    require "../Validation/validaFuncionario.php";
 
     //Variaveis usuario
     $idFunc = 0;
@@ -22,6 +24,12 @@
         {
         $email = $_POST["email"];
         $senha = $_POST["senha"];
+
+        $funcionarioFuncao = new FuncionarioFuncoes($pdo);
+        $verificaSenha = $funcionarioFuncao->validarSenha($senha);
+        var_dump($verificaSenha);
+        exit();
+
 
         $query = $pdo->prepare("SELECT * FROM funcionario WHERE emailFunc = :e AND senha = :s");
         $query->bindValue(":e", $email);

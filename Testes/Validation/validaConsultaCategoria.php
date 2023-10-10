@@ -14,6 +14,7 @@ if (!isset($_POST["cadastrar"])) {
     $categoria = new Categoria(
               null,
               $_POST['descricao'],
+              $_POST['ativo'],
 
     );
        

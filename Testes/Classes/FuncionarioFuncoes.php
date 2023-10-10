@@ -2,6 +2,8 @@
 class FuncionarioFuncoes {
 
               private PDO $pdo;
+              //atributo para validar senha:
+              private string $senhaSegura;
 
               public function __construct(PDO $pdo)
       {
@@ -44,18 +46,24 @@ class FuncionarioFuncoes {
             $instrucao->bindValue(10, $funcionario->getImagem());
             $instrucao->execute();
       }
+//não tô consguindo jogar a $senhaSegura no validaSenha():
+      public function setHash(string $senhaSegura): void {
+            $this->senhaSegura = $senhaSegura;
+           }
 
-      //NÃO FUNCIONA:
-      public function buscarFuncionarios()
-      {
-            $sql = "SELECT funcionario.idFunc, funcionario.nome, cargo.descicao as cargo, funcionario.nome_fantasia from funcionario inner join cargo on funcionario.idCargo = cargo.idCargo;";
-            $instrucao = $this->pdo->query($sql);
-            $dados = $instrucao->fetchAll(PDO::FETCH_ASSOC);
+      public function getHash() : string {
+            return $this->senhaSegura;
+      }
 
-            $todosDados = array_map(function ($funcionario) {
-                  return $this->formarObjeto($funcionario);
-            }, $dados);
-            return $todosDados;
+      public function validarSenha(String $senhaPura){
+            
+            if(password_verify($senhaPura, $this->senhaSegura)){
+                  echo "senha válida";
+            }
+            else{
+                  echo "senha inválida";
+            }
+             
       }
 
       public function buscarAtivos()
@@ -72,6 +80,7 @@ class FuncionarioFuncoes {
       }
 
 
+
       public function buscar(int $idFunc)
       {
             $sql = "SELECT * FROM funcionario WHERE idFunc =  ?;";
@@ -83,6 +92,25 @@ class FuncionarioFuncoes {
 
             return $this->formarObjeto($dados);
       }
+
+      public function buscarNome(string $nome)
+      {
+            $sql = "SELECT * FROM funcionario WHERE nome =  ? AND ativo = 1;";
+            $instrucao = $this->pdo->prepare($sql);
+            $instrucao->bindValue(1, $nome);
+            $instrucao->execute();
+
+            $dados = $instrucao->fetchAll(PDO::FETCH_ASSOC);
+
+            $selecionado = array_map(function ($funcionario) {
+                  return $this->formarObjeto($funcionario);
+            }, $dados);
+
+            return $selecionado;
+      }
+
+
+
 
       public function mostraId(int $idFunc)
       {
@@ -96,7 +124,6 @@ class FuncionarioFuncoes {
 
       public function inativar(int $idFunc)
       {
-
             $sql = "UPDATE `livro_de_receita2`.`funcionario`
                             SET `ativo` = 0
                             WHERE `idFunc` = ?;";
