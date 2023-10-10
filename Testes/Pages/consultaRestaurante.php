@@ -1,14 +1,14 @@
 <?php
     include_once "../Connection/conexao.php";
-    
+
     //Variaveis usuario
-    $idIngrediente = 0;
-    $descricao = "";
+    $idRestaurante = 0;
+    $nome= "";
+    $contato="";
 
     //CASO MUDAR QUERY, ATUALIZAR TABELA HTML APROPRIADAMENTE
-    $sql = "SELECT * FROM ingrediente where ativo = 1";
+    $sql = "SELECT * FROM restaurante where ativo = 1";
     $query= $pdo->query($sql);
-
 
 ?>
 
@@ -29,6 +29,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- HEADER -->
     <div class="container">
@@ -54,7 +55,7 @@
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Consulta - Ingrediente</h3>
+            <h3>Consulta - Restaurante</h3>
             </div>
             <hr>
         </div>
@@ -66,8 +67,8 @@
             <thead>
                 <tr>
                 <th scope="col">Id Ingrediente</th>
-                <th scope="col">Nome do Ingrediente</th>
-                <th scope="col">Descricao</th>
+                <th scope="col">Nome do Restaurante</th>
+                <th scope="col">Contato</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
                 
@@ -78,15 +79,15 @@
                     while($row = $query->fetch(PDO::FETCH_ASSOC))
                     {
                         echo '<tr>';
-                        echo '<td>'.$row['idIngrediente'].'</td>';
+                        echo '<td>'.$row['idRestaurante'].'</td>';
                         echo '<td>'.$row['nome'].'</td>';
-                        echo '<td>'.$row['descricao'].'</td>';
+                        echo '<td>'.$row['contato'].'</td>';
                         
                         ?>
-                            <!-- ACESSAR INGREDIENTE-->
+                            <!-- ACESSAR Restaurante-->
                             <td scope="col">
-                                <form action="atualizaIngrediente.php" method="POST">
-                                <input type="hidden" name="atualizaCargo" value=<?php echo '"'.$row['idIngrediente'].'"'; ?>>
+                                <form action="atualizaRestaurante.php" method="POST">
+                                <input type="hidden" name="atualizaRestaurante" value=<?php echo '"'.$row['idRestaurante'].'"'; ?>>
                                 <button type="submit" class="configbutton"><span><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
                                 <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                                 </svg></span></button>
@@ -100,9 +101,9 @@
 
                             <!--EXCLUIR INGREDIENTE -->
                             <td scope="col">
-                                <form action="inativarIngrediente.php" method="POST">
+                                <form action="inativarRestaurante.php" method="POST">
                                     <?php //echo $row['idCargo']; ?>
-                                    <input type="hidden" name="excluirIngrediente" value=<?php echo '"'.$row['idIngrediente'].'"'; ?>>
+                                    <input type="hidden" name="inativarRestaurante" value=<?php echo '"'.$row['idRestaurante'].'"'; ?>>
                                     <button type="submit" class="configbutton"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
                                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
@@ -118,9 +119,9 @@
         </table>
 
     </div>
-    <!--End Table --> 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <!--End Table -->
     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>
 </html>
+

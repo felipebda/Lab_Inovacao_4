@@ -64,6 +64,11 @@
             header("Location: secaoAdmin.php");
             exit();
         }
+        else if($idcargo == 2)
+        {
+            header("Location: secaoCozi.php");
+            exit();
+        }
         else if($idcargo == 3)
         {
             header("Location: secaoCozi.php");

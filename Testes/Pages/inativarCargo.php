@@ -1,7 +1,19 @@
 <?php
-include_once "../Connection/conexao.php";
-require "../Classes/Cargo.php";
-require "../Classes/CargoFuncoes.php";
+    include_once "../Connection/conexao.php";
+
+    $idCargo = intval($_POST['excluirCargo']);
+    //echo $idCargo;
+
+    //Busca das Informações para tabela
+    $sql = "SELECT * FROM cargo WHERE idCargo =".$idCargo."";
+    $query= $pdo->query($sql);
+
+    //Armazenamento das informações
+    $resultado = $query->fetch(PDO::FETCH_ASSOC);
+    //echo $resultado["idCargo"];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,40 +45,38 @@ require "../Classes/CargoFuncoes.php";
       </header>
     </div>
     <!--END HEADER -->
-    
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Cadastro de Cargos</h3>
+            <h3>Inativar Cargo</h3>
             </div>
             <hr>
         </div>
-    </div>    
-
+    </div>
+    
     <!-- JANELA CADASTRO  -->
     <div class="container col-4">
         <main class="form-signin w-100 m-auto">
-            <form action="../Validation/validaCadastroCargo.php" method="post">
+            <form action="../Validation/validaInativarCargo.php" method="post">
             <svg xmlns="http://www.w3.org/2000/svg" width="72" height="57" fill="currentColor" class="bi bi-clipboard2" viewBox="0 0 16 16">
             <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5 1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
             <path d="M10 .5a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5.5.5 0 0 1-.5.5.5.5 0 0 0-.5.5V2a.5.5 0 0 0 .5.5h5A.5.5 0 0 0 11 2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
             </svg>               
-              <h1 class="h3 mb-3 fw-normal">Informe nome do novo cargo</h1>
+              <h1 class="h3 mb-3 fw-normal">Este cargo será Inativado</h1>
 
                 <div class="form-floating rounded-top">
-                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="descicao">
+                <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com" name="nome_cargo" value =<?php echo "'".$resultado["descicao"]."'"; ?> readonly>
                 <label for="floatingInput">Nome do Cargo </label>
                 </div>
 
-                <!--<input type="hidden" name="tipo_cadastro" value="cargo">-->
-                <input type="hidden" name="ativo" id="ativo" value="1" checked>
+                <input type="hidden" name="tipo_excluir" value =<?php echo "'".$resultado["idCargo"]."'"; ?>>
 
-                <button class="btn btn-primary w-25 py-2 mt-3" type="submit" name="tipo_cadastro" >Cadastrar</button>
+                <button class="btn btn-danger w-25 py-2 mt-3" type="submit">Inativar</button>
             </form>
             <a href="secaoAdmin.php"><button class="btn btn-success w-25 py-2 mt-3" >Voltar</button></a>
         </main>
     </div>
-    <!-- FIM JANELA CADASTRO -->    
+    <!-- FIM JANELA CADASTRO -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

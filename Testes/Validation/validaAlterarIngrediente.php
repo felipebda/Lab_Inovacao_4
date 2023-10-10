@@ -1,5 +1,6 @@
 <?php
     include_once "../Connection/conexao.php";
+    require "../Classes/IngredienteFuncoes.php";
 
     //Tratamento da informação do formulario coerente ao Banco de dados
     $IdIngrediente = intval($_POST['tipo_alterar']);
@@ -16,17 +17,9 @@
     }
     else
     {
-            //Comando
-            $query = "UPDATE ingrediente SET nome = :n, descricao = :d WHERE idIngrediente = :id";
-            //Tratamento dos dados
-            $command = $pdo->prepare($query);
-            $command->bindValue(":n",$novoNomeIngrediente);
-            $command->bindValue(":d",$novaDescricaoIngrediente);
-            $command->bindValue(":id",$IdIngrediente);
-            $command->execute();
-            
-            //Ao termino, direcionar à pagina do administrador
-            header("Location: secaoAdmin.php");
+        $ingredienteFuncoes = new IngredienteFuncoes($pdo);
+        $ingredienteFuncoes->alterar(intVal($IdIngrediente), $novoNomeIngrediente, $novaDescricaoIngrediente);
+        header("Location: ../Pages/secaoAdmin.php");
     }
 
 ?>
