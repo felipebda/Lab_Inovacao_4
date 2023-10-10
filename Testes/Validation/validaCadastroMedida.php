@@ -14,6 +14,7 @@ if (!isset($_POST["cadastrar"])) {
     $medida = new Medida(
               null,
               $_POST['descricao'],
+              $_POST['ativo'],
 
     );
        
@@ -23,5 +24,5 @@ if (!isset($_POST["cadastrar"])) {
 
     echo "Sucesso: inclusao de medida";
 
-    //header("Location: consultaMedida.php");
+    header("Location: ../Pages/consultaMedida.php");
 }

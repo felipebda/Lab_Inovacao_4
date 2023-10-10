@@ -152,10 +152,10 @@
         </button>
         <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="cadastroMedida.php">Adicionar Medida</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Medidas</a></li>
+          <li><a class="dropdown-item" href="consultaMedida.php">Consultar Medidas</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Medida</a></li>
+          <li><a class="dropdown-item bg-danger text-light" href="consultaMedida.php">Excluir Medida</a></li>
         </ul>
       </div>      
 
@@ -184,10 +184,10 @@
         </button>
         <ul class="dropdown-menu">
         <li><a class="dropdown-item" href="cadastroCategoria.php">Adicionar Categoria</a></li>
-          <li><a class="dropdown-item" href="#">Consultar Categorias</a></li>
+          <li><a class="dropdown-item" href="consultaCategoria.php">Consultar Categorias</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Categoria</a></li>
+          <li><a class="dropdown-item bg-danger text-light" href="consultaCategoria.php">Excluir Categoria</a></li>
         </ul>
       </div> 
 

@@ -9,6 +9,11 @@ if (!isset($_POST["cadastrar"])) {
     require "../Classes/Funcionario.php";
     require "../Classes/FuncionarioFuncoes.php";
 
+    //CRIANDO O HASH DA SENHA:
+    $senhaPura = $_POST['senha'];
+    $senhaSegura = password_hash($senhaPura, PASSWORD_DEFAULT);  
+
+
 
     //CRIANDO NOVO OBJETO FUNCIONARIO:
     $funcionario = new Funcionario(
@@ -20,7 +25,7 @@ if (!isset($_POST["cadastrar"])) {
         $_POST['idCargo'],
         $_POST['nome_fantasia'],
         $_POST['email'],
-        $_POST['senha'],
+        $senhaSegura,
         $_POST['ativo'],
 
     );
@@ -33,8 +38,10 @@ if (!isset($_POST["cadastrar"])) {
     //INSTANCIANDO O OBJ COM CONEXAO PDO E EXECUTANDO FUNCAO DE CADASTRAR
     $funcionarioFuncao = new FuncionarioFuncoes($pdo);
     $funcionarioFuncao->cadastrar($funcionario);
+    $funcionarioFuncao->setHash($senhaSegura);
+
 
     echo "Inclusao com sucesso";
 
-    header("Location: login.php");
+    //header("Location: login.php");
 }

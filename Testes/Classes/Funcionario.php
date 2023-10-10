@@ -39,6 +39,11 @@ class Funcionario {
              public function getNome() : string {
               return $this->nome;
              }
+             
+             //para o botão de busca:
+             public function setNome(string $nome): void {
+              $this->nome = $nome;
+             }
 
              public function getIngresso() : string {
               return $this->dt_ingr;

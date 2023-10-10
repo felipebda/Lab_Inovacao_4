@@ -1,32 +1,28 @@
 <?php
-    include_once "../Connection/conexao.php";
-    require "../Classes/Funcionario.php";
-    require "../Classes/FuncionarioFuncoes.php";
+include_once "../Connection/conexao.php";
+require "../Classes/Funcionario.php";
+require "../Classes/FuncionarioFuncoes.php";
 
-    $funcionarios = new FuncionarioFuncoes($pdo);
-    $listaFuncionario = $funcionarios->buscarAtivos();
-    
+
+//INSTANCIANDO FUNCIONARIO FUNÇÃO E BUSCANDO PELO ID:
+$funcionarios = new FuncionarioFuncoes($pdo);
+$buscarFuncionario = $funcionarios->buscarNome($_POST['nomeFuncionario']);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Document</title>
-    <style>
-        .color_red{
-            color:red;
-        }
-    </style>
-</head>
-<body>
 
-    <!-- HEADER -->
-    <div class="container">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <title>My CookBook</title>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <div class="container">
       <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-book me-2" viewBox="0 0 16 16">
@@ -52,10 +48,9 @@
             <h3>Consulta - Funcionarios</h3>
             </div>
             <div>
-              <form action="consultaFuncionarioEspecifico.php" method="post">
-              <input type="text" name="nomeFuncionario" >
-              <button class="btn btn-danger w-15 py-2 mt-3" name="buscar" type="submit">Buscar</button>
-              </form>
+              <form action="consultaFuncionarioEspecifico.php" method="POST">
+              <input type="text" name="nomeFuncionario" value="" >
+              <button class="btn btn-danger w-15 py-2 mt-3" name="buscar" type="submit">Buscar</button></form><a href="consultaFuncionario.php"><button class="btn btn-success w-15 py-2 mt-3">Voltar</button></a>
             </div>
             <hr>
         </div>
@@ -77,7 +72,7 @@
             </thead>
             <tbody>
                 <?php
-                    foreach($listaFuncionario as $funcionario): ?>
+                    foreach($buscarFuncionario as $funcionario): ?>
                     <tr>
                         <td><?= $funcionario->getIdFunc() ?></td>
                         <td><?= $funcionario->getNome() ?></td>
