@@ -66,7 +66,7 @@
         }
         else if($idcargo == 2)
         {
-            header("Location: secaoCozi.php");
+            header("Location: secaoCoziJ.php");
             exit();
         }
         else if($idcargo == 3)
