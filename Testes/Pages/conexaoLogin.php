@@ -27,6 +27,7 @@
         //BUSCAR O ID DO CARGO NO OBJETO CRIADO ACIMA:
         $buscarCargo = $funcionarioFuncao->buscarCargo($emailFunc);
         
+
         //SETAR O COOKIE:
         $setCookie = $funcionarioFuncao->setCookie($emailFunc, $verificaSenha, $buscarCargo);
         
