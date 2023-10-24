@@ -1,79 +1,39 @@
 <?php
     include_once "../Connection/conexao.php";
     require "../Classes/FuncionarioFuncoes.php";
+    require "../Classes/Funcionario.php";
     require "../Validation/validaFuncionario.php";
-
-    //Variaveis usuario
-    $idFunc = 0;
-    $rg = "";
-    $nome = "";
-    $dt_ingr = "";
-    $salario = 0;
-    $idcargo = 0;
-    $nome_fantasia = "";
-    $email = "";
-    $senha = "";
-  
-    $nome_cargo = "";
-
-    //ACESSO PADRAO - VIA LOGIN
 
     if(isset($_POST["tipo_acesso"]))
     {
         try
         {
-        $email = $_POST["email"];
-        $senha = $_POST["senha"];
-
-        $funcionarioFuncao = new FuncionarioFuncoes($pdo);
-        $verificaSenha = $funcionarioFuncao->validarSenha($senha);
-        var_dump($verificaSenha);
-        exit();
-
-
-        $query = $pdo->prepare("SELECT * FROM funcionario WHERE emailFunc = :e AND senha = :s");
-        $query->bindValue(":e", $email);
-        $query->bindValue(":s", $senha);
-        $query->execute();
-        //var_dump ($query);
-
-        $lista = $query->fetchAll(PDO::FETCH_ASSOC);
-        if(count($lista) == 0)
-        {
-            throw new Exception("Erro na busca do funcionario no login", 1);
-        }
-
-        $idFunc = $lista[0]["idFunc"];
-        $rg = $lista[0]["rg"];
-        $nome = $lista[0]["nome"];
-        $dt_ingr = $lista[0]["dt_ingr"];
-        $salario = $lista[0]["salario"];
-        $idcargo = $lista[0]["idCargo"];
-        $nome_fantasia = $lista[0]["nome_fantasia"];
-        $email = $lista[0]["emailFunc"];
-        $senha = $lista[0]["senha"];
-
-        // TODO: Fazer um cookie com o id do usuario
-        setcookie('u_email', $email, time()+3000);
-        setcookie('u_senha', $senha, time()+3000);
-        setcookie('u_idcargo', $idcargo, time()+3000);
+        //PEGAR A REQUISIÇÃO DO LOGIN:
+        $emailFunc = $_POST["email"];
+        $senhaPura = $_POST["senha"];
         
-        //DIRECIONAR A PAGINA PELO CARGO
-        if ($idcargo == 1) 
-        {
-            header("Location: secaoAdmin.php");
-            exit();
-        }
-        else if($idcargo == 2)
-        {
-            header("Location: secaoCoziJ.php");
-            exit();
-        }
-        else if($idcargo == 3)
-        {
-            header("Location: secaoCozi.php");
-            exit();
-        }
+        //INSTANCIAR FUNCIONARIO COM OS MÉTODOS:
+        $funcionarioFuncao = new FuncionarioFuncoes($pdo);
+
+        //PEGAR HASH PELO EMAIL NO DB:
+        $senhaSegura = $funcionarioFuncao->getHash($emailFunc);
+        
+        //VERIFICAR SE O HASH DESCRIPTOGRAFA IGUAL A SENHA QUE O USUÁRIO INSERIU:
+        $verificaSenha = $funcionarioFuncao->validarSenha($senhaPura, $senhaSegura);
+        
+        //CRIAR OBJETO PÓS VALIDAÇÃO:
+        $objFuncionario = $funcionarioFuncao->criarObjeto($emailFunc, $verificaSenha);
+
+        //BUSCAR O ID DO CARGO NO OBJETO CRIADO ACIMA:
+        $buscarCargo = $funcionarioFuncao->buscarCargo($emailFunc);
+        
+
+        //SETAR O COOKIE:
+        $setCookie = $funcionarioFuncao->setCookie($emailFunc, $verificaSenha, $buscarCargo);
+        
+        //DIREICIONAR SECAO DE FUNCIONARIO DE ACORDO COM O ID DO CARGO:
+        $direcionaSecao = $funcionarioFuncao->direcionarSecao($setCookie);
+       
         }
         catch(Exception $e)
         {
@@ -81,6 +41,8 @@
             echo "Excecao capturada: ".$e->getMessage()."\n";
             exit();
         } 
+
+
     }
 
 
