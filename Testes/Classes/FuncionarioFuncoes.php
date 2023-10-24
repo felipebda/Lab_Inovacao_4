@@ -46,24 +46,41 @@ class FuncionarioFuncoes {
             $instrucao->bindValue(10, $funcionario->getImagem());
             $instrucao->execute();
       }
-//não tô consguindo jogar a $senhaSegura no validaSenha():
-      public function setHash(string $senhaSegura): void {
-            $this->senhaSegura = $senhaSegura;
-           }
 
-      public function getHash() : string {
-            return $this->senhaSegura;
+
+      public function getHash(string $emailFunc) {
+            $sql = "SELECT senha FROM funcionario WHERE emailFunc = ?";
+            $instrucao = $this->pdo->prepare($sql);
+            $instrucao->bindValue(1, $emailFunc);
+            $instrucao->execute();
+
+            $senhaArray = $instrucao->fetch(PDO::FETCH_ASSOC);
+
+            $senhaSegura = $senhaArray['senha'];
+
+            return $senhaSegura;
       }
 
-      public function validarSenha(String $senhaPura){
+      
+      public function validarSenha(String $senhaPura, string $senhaSegura){
+            $senhaSeguraAlt = str_replace('"','',$senhaSegura);
+            //var_dump($senhaSeguraAlt);
+            $msg = (password_verify($senhaPura, $senhaSeguraAlt)) ? "senha válida" : "senha inválida";  
+            //echo $msg;     
+            return $senhaSeguraAlt; 
+      }
+
+      public function criarObjeto(string $emailFunc, string $senhaSeguraAlt) {
             
-            if(password_verify($senhaPura, $this->senhaSegura)){
-                  echo "senha válida";
-            }
-            else{
-                  echo "senha inválida";
-            }
-             
+            $query = "SELECT * FROM funcionario WHERE emailFunc = ? AND senha = ?";
+            $instrucao = $this->pdo->prepare($query);
+            $instrucao->bindValue(1, $emailFunc);
+            $instrucao->bindValue(2, $senhaSeguraAlt);
+            $instrucao->execute();
+            $lista = $instrucao->fetch(PDO::FETCH_ASSOC);
+            
+            return $this->formarObjeto($lista);
+        
       }
 
       public function buscarAtivos()
@@ -79,8 +96,6 @@ class FuncionarioFuncoes {
             return $todosAtivos;
       }
 
-
-
       public function buscar(int $idFunc)
       {
             $sql = "SELECT * FROM funcionario WHERE idFunc =  ?;";
@@ -91,6 +106,53 @@ class FuncionarioFuncoes {
             $dados = $instrucao->fetch(PDO::FETCH_ASSOC);
 
             return $this->formarObjeto($dados);
+      }
+
+      public function buscarCargo(string $emailFunc){
+                  $sql = "SELECT idCargo FROM funcionario WHERE emailFunc = ?";
+                  $instrucao = $this->pdo->prepare($sql);
+                  $instrucao->bindValue(1, $emailFunc);
+                  $instrucao->execute();
+      
+                  $cargoArray = $instrucao->fetch(PDO::FETCH_ASSOC);
+
+                  $cargo = $cargoArray['idCargo'];
+                  return $cargo;
+
+      }
+
+      public function setCookie(String $emailFunc, String $senhaSeguraAlt, String $idCargo){
+
+            setcookie('u_email', $emailFunc, time()+3000);
+            setcookie('u_senha', $senhaSeguraAlt, time()+3000);
+            setcookie('u_idcargo', $idCargo, time()+3000);
+
+            return $idCargo;
+            
+      }
+
+      public function direcionarSecao(String $idCargo){
+            if ($idCargo == 1) 
+            {
+                header("Location: secaoAdmin.php");
+                exit();
+            }
+            else if($idCargo == 2)
+            {
+                header("Location: secaoCozi.php");
+                exit();
+            }
+            else if($idCargo == 3)
+            {
+                header("Location: secaoDegust.php");
+                exit();
+            }
+            else if($idCargo == 4)
+            {
+                header("Location: secaoEdit.php");
+                exit();
+            }
+            return true;
       }
 
       public function buscarNome(string $nome)
