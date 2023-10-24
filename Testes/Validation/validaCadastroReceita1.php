@@ -35,10 +35,20 @@
     }
     else
     {
-        $receitaFuncoes->inserirReceitaPreliminar($nomeReceita,$idCozinheiro,$idReceita, $dataReceita,$idCategoria);
+        try
+        {
+            $receitaFuncoes->inserirReceitaPreliminar($nomeReceita,$idCozinheiro,$idReceita, $dataReceita,$idCategoria);
+            header("Location: ../Pages/cadastroReceita2.php");
 
+        }
+        catch(Exception $e)
+        {
+            echo "<script>alert(' Message !')</script>";
+            echo "<script>window.location.href = '../Pages/cadastroReceita1.php'</script>";
+            
+        }
+        //var_dump($receitaFuncoes);
         //jogar para próxima pagina de cadastro
-        header("Location: ../Pages/cadastroReceita2.php");
     }
 
     //PERSISTENCIA DE DADOS DA NOVA RECEITA PARA PROXIMA PÁGINA

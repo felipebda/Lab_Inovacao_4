@@ -30,7 +30,7 @@ class ReceitaFuncoes
     public function inserirReceitaPreliminar($nomeReceita,$idCozinheiro,$idReceita, $dataReceita,$idCategoria)
     {
         //FAZER SQL
-        $sqlNovaReceita = "INSERT INTO livro_de_receita2.receita (nome, cozinheiro, idRec, dt_criacao, id_categ, modo_preparo, ind_inedita) VALUES (:nomeReceita, :idCozinheiro, :idReceita, :da_ta, :idCategoria, '', 1)";
+        $sqlNovaReceita = "INSERT INTO livro_de_receita2.receita (nome, cozinheiro, idRec, dt_criacao, id_categ, modo_preparo, ind_inedita,ativo) VALUES (:nomeReceita, :idCozinheiro, :idReceita, :da_ta, :idCategoria, '', 1,1)";
         $queryReceita = $this->pdo->prepare($sqlNovaReceita);
         //-------ACRESCENTAR INFORMAÇÕES AO BD DE RECEITA-----------------------//
         $queryReceita->bindValue(":nomeReceita", $nomeReceita);
@@ -39,7 +39,21 @@ class ReceitaFuncoes
         $queryReceita->bindValue(":da_ta", $dataReceita);
         $queryReceita->bindValue(":idCategoria", $idCategoria);
         $queryReceita->execute();
+        
     }
+
+    public function buscarAtivos()
+      {
+            $sql = "SELECT * FROM receita WHERE ativo = 1";
+            $statement = $this->pdo->query($sql);
+            $dados = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+            $todosAtivos = array_map(function ($receita) {
+                  return $this->formarObjeto($receita);
+            }, $dados);
+
+            return $todosAtivos;
+      }
 }
 
 
