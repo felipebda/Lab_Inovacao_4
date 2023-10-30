@@ -135,6 +135,13 @@ $buscaTemIngrediente = $queryTemIngediente->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <title>My CookBook</title>
+    <style>
+        .configbutton{
+            border:none;
+            background-color:transparent;
+            color:red;
+        }
+    </style>
 </head>
 <body>
     <!-- HEADER -->
@@ -218,16 +225,23 @@ $buscaTemIngrediente = $queryTemIngediente->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="col-3">
                 
-                <button class="btn btn-primary w-30 py-2 mt-3" type="submit">Adicionar</button>
+                <button class="btn btn-success w-30 py-2 mt-3" type="submit">Adicionar Ingrediente</button>
                 <br>
                 
                 
             </div>
             </form>
         </div>
-        <a href="cadastroReceita3.php">
-            <button class="btn btn-success w-30 py-2 mt-3">Continuar</button>
-        </a>
+        <div class="row">
+            <div class="col-9"></div>
+            <div class="col-3">
+                <a href="cadastroReceita3.php">
+                    <button class="btn btn-primary w-30 py-2 mt-3">Próxima Etapa</button>
+                </a>
+            </div>
+
+        </div>
+        
     </div>
 
 
@@ -273,7 +287,14 @@ $buscaTemIngrediente = $queryTemIngediente->fetchAll(PDO::FETCH_ASSOC);
                                 <td>
                                     <form action="../Validation/validaExcluirIngredienteReceita.php" method="post">
                                         <input type="hidden" name="excluir_ing_receita" id="excluir_ing_receita" value=<?php echo '"'.$row['idIngrediente'].'"'; ?> >
-                                        <button type="submit"><span>X</span></button>
+                                        <button type="submit" class='configbutton'>
+                                            <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-x-square" viewBox="0 0 16 16">
+                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                            </svg>
+                                            </span>
+                                        </button>
                                     </form>
                                 </td>
 

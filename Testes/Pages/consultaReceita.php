@@ -1,10 +1,63 @@
 <?php
+    //Abrir session
+    session_start();
+    $idFunc = intval($_SESSION['idFunc']);
+
     include_once "../Connection/conexao.php";
     require "../Classes/Receita.php";
+    require "../Classes/ReceitaFuncoes.php";
     require "../Classes/CategoriaFuncoes.php";
-
     $receitas = new ReceitaFuncoes($pdo);
-    $listaReceita = $receitas->buscarAtivos();
+    //$listaReceita = $receitas->buscarAtivos();
+
+    $queryBuscaReceita;
+    
+
+    if(isset($_POST['nomeReceita']))
+    {
+        $nomeBusca = '%'.$_POST['nomeReceita'].'%';
+        echo $nomeBusca;
+        $sqlBuscaReceita = "SELECT re.idRec,
+                                   re.nome,
+                                   re.cozinheiro,
+                                   ca.descricao as nome_categoria,
+                                   fu.nome as nome_cozinheiro
+                            FROM receita re
+                            JOIN categoria ca on re.id_categ = ca.idCategoria
+                            JOIN funcionario fu on re.cozinheiro = fu.idFunc
+                            WHERE re.nome LIKE '$nomeBusca'
+                            ORDER BY idRec ASC";
+
+        $queryBuscaReceita = $pdo->query($sqlBuscaReceita);
+        $queryBuscaReceita->execute();
+    }
+    else
+    {
+        //Fazer SQL das receitas - EM GERAL
+        $sqlBuscaReceita = "SELECT re.idRec,
+                            re.nome,
+                            re.cozinheiro,
+                            ca.descricao as nome_categoria,
+                            fu.nome as nome_cozinheiro
+                            FROM receita re
+                            JOIN categoria ca on re.id_categ = ca.idCategoria
+                            JOIN funcionario fu on re.cozinheiro = fu.idFunc
+                            ORDER BY idRec ASC";
+
+        $queryBuscaReceita = $pdo->query($sqlBuscaReceita);
+        $queryBuscaReceita->execute();
+    }
+
+
+    
+
+    //$buscaReceita = $queryBuscaReceita->fetchAll(PDO::FETCH_ASSOC);
+
+    //echo $buscaReceita[1]['nome'];
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +70,9 @@
     <style>
         .color_red{
             color:red;
+        }
+        .color_blue{
+            color:blue;
         }
         .configbutton{
             border:none;
@@ -53,7 +109,7 @@
             </div>
             <div>        
 
-    <form action="consultaReceitaEspecifico.php" method="post">
+    <form action="consultaReceita.php" method="post">
               <input type="text" name="nomeReceita" >
               <button class="btn btn-danger w-15 py-2 mt-3" name="buscar" type="submit">Buscar</button>
               </form>
@@ -67,47 +123,78 @@
             <thead>
                 <tr>
                 <th scope="col">Id Receita</th>
-                <!--<th scope="col">Nome do Receita</th>-->
                 <th scope="col">Nome</th>
                 <th scope="col">Categoria</th>
+                <th scope="col">Autor</th>
                 <th scope="col"></th>
-                <th scope="col"></th>
+                <th scope="col">Visualizar</th>
+                <th scope="col">Modificar</th>
                 
                 </tr>
             </thead>
             <tbody>
-                
-            <?php
-                    foreach($listaReceita as $receita): ?>
-                    <tr>
-                        <!--ID RECEITA -->
-                        <td><?= $receita->getIdReceita() ?></td>
-                        <!--NOME RECEITA -->
-                        <td><?= $receita->getNome() ?></td>
-                        <!--CATEGORIA RECEITA -->
-                        <td><?= $receita->getCategoria() ?></td>
-                        <!--ATUALIZA RECEITA -->
+                <?php
+                    while($row = $queryBuscaReceita->fetch(PDO::FETCH_ASSOC))
+                    {
+                        echo '<tr>';
+                        echo '<td>'.$row['idRec'].'</td>';
+                        echo '<td>'.$row['nome'].'</td>';
+                        echo '<td>'.$row['nome_categoria'].'</td>';
+                        echo '<td>'.$row['nome_cozinheiro'].'</td>';
+                        echo '<td></td>';
+                        ?>
 
-                        <td scope="col"><a href=""><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search " viewBox="0 0 16 16">
+                        <!--VISUALIZAR INGREDIENTE -->
+                        <td scope="col">
+                            <form action="visalizaReceita.php" method="POST">
+                            <input type="hidden" name="idVisualizaReceita" value=<?php echo '"'.$row['idRec'].'"'; ?>>
+                            <button type="submit" class="configbutton color_blue"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                            </svg>
-                            </a>
-                            </td>
+                            </svg></span></button>
+                            </form>
+                        </td>
 
-                            <!--EXCLUIR CONTATO -->
-                            <td scope="col"><a name="inativar" href="inativarCategoria.php?idCategoria=<?= $receita->getIdReceita() ?>">
-                            <input type="hidden" name="idCategoria" value="<?= $receita->getIdReceita() ?>">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-trash color_red" viewBox="0 0 16 16">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-                            </svg>
-                    </tr>
-                    <?php endforeach; ?>
+
+                        <?php 
+                        if(intval($row['cozinheiro']) == $idFunc)
+                        {
+                            ?>
+                                <td scope="col">
+                                <form action="atualizaReceita.php" method="POST">
+                                <input type="hidden" name="atualizaReceita" value=<?php echo '"'.$row['idRec'].'"'; ?>>
+                                <button type="submit" class="configbutton color_blue"><span><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                </svg></span></button>
+                                </form>
+                                </td>
+                            <?php
+                        }
+                        else{
+                            echo '<td></td>';
+                        }
+                    }
+
+                ?>
+                </tr>
+                
+
             </tbody>
         </table>
 
     </div>
     <!--End Table --> 
+
+    <!--FOOTER -->
+    <footer class="py-3 my-4" >
+      <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Editora</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Contato</a></li>
+      </ul>
+      <p class="text-center text-muted">© 2023 My CookBook, Inc</p>
+    </footer>
+    <!--END FOOTER -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     

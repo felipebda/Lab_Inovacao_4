@@ -84,7 +84,7 @@ $idReceitaSession = intval($_SESSION["idReceitaCadastro"]);
             <div class="row">
                 <div class="col-3"></div>
                 <div class="col-6 d-flex justify-content-center align-items-center">
-                    <button class="btn btn-primary w-30 py-2 mt-3" type="submit">Adicionar</button>
+                    <button class="btn btn-primary w-30 py-2 mt-3" type="submit">Próxima Etapa</button>
                     <input type="hidden" name="idReceita" id="idReceita" value=<?php echo$idReceitaSession; ?>>
                 </div>
                 <div class="col-3"></div>

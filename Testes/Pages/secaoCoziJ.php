@@ -1,54 +1,25 @@
 <?php
-      //Variaveis de conexao
-    $dbname = "livro_de_receita";
-    $local = "localhost";
-    $user = "root";
-    $password = "123456";
+    //NOVO -COMECAR A SESSION ---------------------------------------------------------------------------------------
+    session_start();
 
-      //Variaveis usuario
-    $idFunc = 0;
-    $rg = "";
-    $nome = "";
-    $dt_ingr = "";
-    $salario = 0;
-    $idcargo = 0;
-    $nome_fantasia = "";
-    $email = "";
-    $senha = "";
+    include_once "../Connection/conexao.php";
 
-    $nome_cargo = "";
 
-      //CONEXAO COM BANCO DE DADOS
-    try
-    {
-        $pdo = new PDO("mysql:dbname=".$dbname.";host=".$local."",$user,$password);
-    }
-    catch(PDOException $e)
-    {
-        echo "Erro ao conectar com banco de dados: ".$e->getMessage();
-    }
+    //ID USUARIO usuario
+    $idFunc = intval($_SESSION['idFunc']);
 
-    //ACESSO VIA COOKIE
-    if(isset($_COOKIE["u_email"]) && !isset($_POST["tipo_acesso"]))
-    {
-        $id_func = intval($_COOKIE['u_idcargo']);
+    $sqlfuncionario = "SELECT fu.nome as nome_func, ca.descicao as nome_cargo
+                       FROM funcionario fu
+                       JOIN cargo ca on fu.idCargo = ca.idCargo
+                       WHERE idFunc = $idFunc";
+    
+    $queryFuncionario = $pdo->query($sqlfuncionario);
+    $queryFuncionario->execute();
 
-        $q_cookie = $pdo->prepare("SELECT * FROM funcionario WHERE idCargo = :id");
-        $q_cookie->bindValue(":id", $id_func);
-        $q_cookie->execute();
+    $buscaFuncionario = $queryFuncionario->fetch(PDO::FETCH_ASSOC);
 
-        $lista_cookie = $q_cookie->fetchAll(PDO::FETCH_ASSOC);
-        
-        $idFunc = $lista_cookie[0]["idFunc"];
-        $rg = $lista_cookie[0]["rg"];
-        $nome = $lista_cookie[0]["nome"];
-        $dt_ingr = $lista_cookie[0]["dt_ingr"];
-        $salario = $lista_cookie[0]["salario"];
-        $idcargo = $lista_cookie[0]["idCargo"];
-        $nome_fantasia = $lista_cookie[0]["nome_fantasia"];
-        $email = $lista_cookie[0]["email"];
-        $senha = $lista_cookie[0]["senha"];
-    }
+    //echo $buscaFuncionario['nome_func'];
+
 ?>
 
 <!DOCTYPE html>
@@ -87,29 +58,34 @@
     <div class="container">
       <div class="row">
         <div class= "col-3">
-          <?php echo "Bem vindo, ". $nome; ?>
+          <?php echo "Bem vindo, ". $buscaFuncionario['nome_func']; ?>
         </div>
         <div class= "col-7" ></div>
-        <div class= "col-2"> <?php echo "Perfil: <b>COZINHEIRO</b>"; ?></div>
+        <div class= "col-2"> <?php echo 'Cargo: '.$buscaFuncionario['nome_cargo']; ?></div>
       </div>
     </div>
     <section class="conteiner-fluid m-0 my-4 pt-5 pb-5 d-flex justify-content-center">
       <div class="container m-0 p-0 pt-5 pb-5 d-flex justify-content-space">
         <!--Inverti o A pelo button e funcionou-->
-        <a href="cadastroReceita1.php" class="text-decoration-none text-dark"><img src="../Icons/adicionar_receita.png" alt="" width="30%">
-          <button id="cat" class="container col-3 p-2 pt-4 text-center">
-          
+        <div class="col-1"></div>
+        <a href="cadastroReceita1.php" class="col-2 text-decoration-none text-dark"><img src="../Icons/adicionar_receita.png" alt="" width="30%">
+          <button id="cat" class="container  p-2 pt-4 text-center">         
             <h6 class="pt-3">Adicionar Receita</p>
           </button>
-          </a>
-        <button id="cat" class="container col-3 p-2 pt-4 text-center">
-          <a href="#" class="text-decoration-none text-dark"><img src="../Icons/modificar_receita.png" alt="" width="30%">
-            <h6 class="pt-3">Modificar Receita</p></a>
-        </button>
-        <button id="cat" class="container col-3 p-2 pt-4 text-center">
-          <a href="#" class="text-decoration-none text-dark"><img src="../Icons/pesquisar_receita.png" alt="" width="30%">
-            <h6 class="pt-3">Pesquisar Receita</p></a>
-        </button>    
+        </a>
+        <div class="col-2"></div>
+        <a href="#" class="col-2 text-decoration-none text-dark"><img src="../Icons/modificar_receita.png" alt="" width="30%">
+          <button id="cat" class="container  p-2 pt-4 text-center">
+              <h6 class="pt-3">Modificar Receita</p>
+          </button>
+        </a>
+        <div class="col-2"></div>
+        <a href="consultaReceita.php" class="col-2 text-decoration-none text-dark"><img src="../Icons/pesquisar_receita.png" alt="" width="30%">
+          <button id="cat" class="container  p-2 pt-4 text-center">
+              <h6 class="pt-3">Pesquisar Receita</p>
+          </button> 
+        </a>
+        <div class="col-1"></div>   
       </div>
     </section>
 

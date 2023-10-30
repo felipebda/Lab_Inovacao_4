@@ -43,7 +43,7 @@
         }
         catch(Exception $e)
         {
-            echo "<script>alert(' Message !')</script>";
+            echo "<script>alert('Você já possui uma receita com esse nome.')</script>";
             echo "<script>window.location.href = '../Pages/cadastroReceita1.php'</script>";
             
         }

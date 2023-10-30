@@ -1,4 +1,7 @@
 <?php
+    //NOVO -COMECAR A SESSION ---------------------------------------------------------------------------------------
+    session_start();
+
     include_once "../Connection/conexao.php";
     require "../Classes/FuncionarioFuncoes.php";
     require "../Classes/Funcionario.php";
@@ -26,7 +29,13 @@
 
         //BUSCAR O ID DO CARGO NO OBJETO CRIADO ACIMA:
         $buscarCargo = $funcionarioFuncao->buscarCargo($emailFunc);
-        
+
+        //NOVO - BUSCAR O ID DO FUNCIONARIOA NO OBJETO CRIADO ACIMA: -------------------------------------------------------
+        $buscarIdFunc = $funcionarioFuncao->buscarIdFuncionario($emailFunc);
+
+        //NOVO - FAZER UM SESSION COM IDFUNC -------------------------------------------------------------------------------
+        $_SESSION['idFunc'] = $buscarIdFunc;
+
 
         //SETAR O COOKIE:
         $setCookie = $funcionarioFuncao->setCookie($emailFunc, $verificaSenha, $buscarCargo);
