@@ -81,7 +81,7 @@ class Funcionario {
                 $this->imagem = $imagem;
                }
 
-               public function getAtivo() : string {
+              public function getAtivo() : string {
                 return $this->ativo;
                }
 }

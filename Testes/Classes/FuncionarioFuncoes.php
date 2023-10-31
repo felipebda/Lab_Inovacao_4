@@ -47,6 +47,21 @@ class FuncionarioFuncoes {
             $instrucao->execute();
       }
 
+      public function checkEmail(string $emailFunc){
+            $sql = "SELECT emailFunc FROM funcionario WHERE emailFunc = ?";
+            $instrucao = $this->pdo->prepare($sql);
+            $instrucao->bindValue(1, $emailFunc);
+            $instrucao->execute();
+            
+            $emailArray = $instrucao->fetch(PDO::FETCH_ASSOC);
+
+            $email = $emailArray['emailFunc'];
+
+            
+                  return $email;
+            
+
+      }
 
       public function getHash(string $emailFunc) {
             $sql = "SELECT senha FROM funcionario WHERE emailFunc = ?";
@@ -65,9 +80,13 @@ class FuncionarioFuncoes {
       public function validarSenha(String $senhaPura, string $senhaSegura){
             $senhaSeguraAlt = str_replace('"','',$senhaSegura);
             //var_dump($senhaSeguraAlt);
-            $msg = (password_verify($senhaPura, $senhaSeguraAlt)) ? "senha válida" : "senha inválida";  
-            //echo $msg;     
-            return $senhaSeguraAlt; 
+            $msg = (password_verify($senhaPura, $senhaSeguraAlt)) ? "Senha válida" : "<br>Senha inválida";  
+            if ($msg == "<br>Senha inválida") {
+                  echo $msg; 
+            } else{
+                  return $senhaSeguraAlt;
+            }    
+             
       }
 
       public function criarObjeto(string $emailFunc, string $senhaSeguraAlt) {
@@ -148,22 +167,23 @@ class FuncionarioFuncoes {
       public function direcionarSecao(String $idCargo){
             if ($idCargo == 1) 
             {
-                header("Location: secaoAdmin.php");
+                header("Location: ../Pages/secaoAdmin.php");
                 exit();
             }
             else if($idCargo == 2)
             {
+
                 header("Location: secaoCoziJ.php");
                 exit();
             }
             else if($idCargo == 3)
             {
-                header("Location: secaoDegust.php");
+                header("Location: ../Pages/secaoDegust.php");
                 exit();
             }
             else if($idCargo == 4)
             {
-                header("Location: secaoEdit.php");
+                header("Location: ../Pages/secaoEdit.php");
                 exit();
             }
             return true;
