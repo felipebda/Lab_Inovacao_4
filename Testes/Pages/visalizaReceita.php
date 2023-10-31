@@ -3,7 +3,7 @@ session_start();
 include_once "../Connection/conexao.php";
 
 
-$idReceitaSession = intval($_SESSION["idReceitaCadastro"]);
+$idReceita = intval($_POST["idVisualizaReceita"]);
 
 //PEGAR TODAS AS INFORMACOES DA RECEITA PARA MOSTRAR AO COZINHEIRO SUA RECEITA NOVA
 $sqlReceita = "SELECT re.nome,re.cozinheiro,
@@ -24,7 +24,7 @@ $sqlReceita = "SELECT re.nome,re.cozinheiro,
                WHERE re.idRec = :id";
 
 $queryReceita = $pdo->prepare($sqlReceita);
-$queryReceita->bindValue(":id", $idReceitaSession);
+$queryReceita->bindValue(":id", $idReceita);
 $queryReceita->execute();
 
 $resultadoReceita = $queryReceita->fetch(PDO::FETCH_ASSOC);
@@ -33,6 +33,7 @@ $idCozinheiro = $resultadoReceita["cozinheiro"];
 $nomeReceita = $resultadoReceita["nome"];
 
 //FAZER BUSCA SEPARADA DOS DEGUSTADORES
+$idReceita = intval($resultadoReceita['idRec']);
 $sqlDegustador = "SELECT re.degustador,
                          fu.nome,
                          re.dt_degustacao,
@@ -42,7 +43,7 @@ $sqlDegustador = "SELECT re.degustador,
                   WHERE re.idRec = :id";
 
 $queryDegustador = $pdo->prepare($sqlDegustador);
-$queryDegustador->bindValue(":id",$idReceitaSession);
+$queryDegustador->bindValue(":id",$idReceita);
 $queryDegustador->execute();
 
 $resultadoDegustador = $queryDegustador->fetch(PDO::FETCH_ASSOC);
@@ -95,12 +96,12 @@ $queryReceitaIngrediente->execute();
     <div class= "container mt-3">
         <div class="row">
             <div class = col-2>
-            <h3>Cadastro de Receita</h3>
+            <h3>Visualização de Receita</h3>
             </div>
             <div class = col-8>
             </div>
             <div class = col-2>
-            <h4>Cadastro Completo</h4>
+            <h4><!--Em branco --></h4>
             </div>
 
             <hr>
@@ -110,7 +111,7 @@ $queryReceitaIngrediente->execute();
     <div class="container">
       <div class="row justify-content-center">
         <div class=" text-center">
-          <h2>Cadastro de Receita concluida!</h2>
+          <h2><!--Em branco --></h2>
         </div>
       </div>
     </div>
@@ -163,7 +164,7 @@ $queryReceitaIngrediente->execute();
           </div>
           <br>
           <ul class="list-group list-group-flush">
-          <a class="btn btn-primary" href="secaoCoziJ.php" role="button">Voltar á Página Principal</a>
+          <a class="btn btn-primary" href="consultaReceita.php" role="button">Voltar </a>
           </ul>
         </div>
       </div>

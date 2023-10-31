@@ -48,17 +48,27 @@ var_dump($idCozinheiro);
 //-----------------------------------------------
 
 //INSERIR INFORMAÇÕES NA TABELA
-$sqlInserirMedidaIngrediente = "INSERT INTO receita_has_ingrediente (nome, cozinheiro, idIngrediente, idMedida, qtd_medida) VALUES (:n, :idCozi, :idIngre, :idMed, :quant)";
-$queryInserirMedidaIngrediente = $pdo->prepare($sqlInserirMedidaIngrediente);
+try
+{ 
+    $sqlInserirMedidaIngrediente = "INSERT INTO receita_has_ingrediente (nome, cozinheiro, idIngrediente, idMedida, qtd_medida) VALUES (:n, :idCozi, :idIngre, :idMed, :quant)";
+    $queryInserirMedidaIngrediente = $pdo->prepare($sqlInserirMedidaIngrediente);
 
-$queryInserirMedidaIngrediente->bindValue(":n",$nomeReceita);
-$queryInserirMedidaIngrediente->bindValue(":idCozi",$idCozinheiro);
-$queryInserirMedidaIngrediente->bindValue(":idIngre",$idIngrediente);
-$queryInserirMedidaIngrediente->bindValue(":idMed",$idMedida);
-$queryInserirMedidaIngrediente->bindValue(":quant",$quantidade);
-$queryInserirMedidaIngrediente->execute();
+    $queryInserirMedidaIngrediente->bindValue(":n",$nomeReceita);
+    $queryInserirMedidaIngrediente->bindValue(":idCozi",$idCozinheiro);
+    $queryInserirMedidaIngrediente->bindValue(":idIngre",$idIngrediente);
+    $queryInserirMedidaIngrediente->bindValue(":idMed",$idMedida);
+    $queryInserirMedidaIngrediente->bindValue(":quant",$quantidade);
+    $queryInserirMedidaIngrediente->execute();
 
-header("Location: ../Pages/cadastroReceita2.php");
+    header("Location: ../Pages/cadastroReceita2.php");
+}
+catch(Exception $e)
+{
+    echo "<script>alert('Ingrediente repetido.')</script>";
+    echo "<script>window.location.href = '../Pages/cadastroReceita2.php'</script>";
+
+}
+
 
 ?>
 

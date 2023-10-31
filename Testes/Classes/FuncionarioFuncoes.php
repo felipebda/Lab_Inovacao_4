@@ -140,6 +140,20 @@ class FuncionarioFuncoes {
 
       }
 
+      //NOVO - Buscar ID do FUNCIONARIO ---------------------------------------------------------------------------
+      public function buscarIdFuncionario(string $emailFunc){
+            $sql = "SELECT idFunc FROM funcionario WHERE emailFunc = ?";
+            $instrucao = $this->pdo->prepare($sql);
+            $instrucao->bindValue(1, $emailFunc);
+            $instrucao->execute();
+
+            $idFuncArray = $instrucao->fetch(PDO::FETCH_ASSOC);
+
+            $idFuncionario = $idFuncArray['idFunc'];
+            return $idFuncionario;
+
+}
+
       public function setCookie(String $emailFunc, String $senhaSeguraAlt, String $idCargo){
 
             setcookie('u_email', $emailFunc, time()+3000);
@@ -158,7 +172,8 @@ class FuncionarioFuncoes {
             }
             else if($idCargo == 2)
             {
-                header("Location: ../Pages/secaoCozi.php");
+
+                header("Location: secaoCoziJ.php");
                 exit();
             }
             else if($idCargo == 3)

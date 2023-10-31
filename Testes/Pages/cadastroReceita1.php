@@ -1,4 +1,9 @@
 <?php
+  //Abrir seçao
+  session_start();
+
+  $idCozinheiro = $_SESSION['idFunc'];
+
     include_once "../Connection/conexao.php";
 
     //Pegar todas as categorias ativas para por no formulario
@@ -6,7 +11,6 @@
     $queryCategoria= $pdo->query($sqlCategoria);
 
     //Pegar a informação do cozinheiro. DEPOIS LIGAR COM A PERSISTENCIA DE DADOS
-    $idCozinheiro = 7;
     $sqlCozinheiro = "SELECT nome FROM funcionario where idFunc = :id";
     $queryCozinheiro= $pdo->prepare($sqlCozinheiro);
     $queryCozinheiro->bindValue(":id",$idCozinheiro);
