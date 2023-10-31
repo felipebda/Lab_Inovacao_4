@@ -32,10 +32,49 @@ class Receita {
                          $this->nota_degustacao = $nota_degustacao;
                          $this->ind_inedita = $nota_degustacao;
                          $this->imagem = $imagem;
-                         $this->ativo = $ativo; 
-                            
+                         $this->ativo = $ativo;             
 
               }
+
+              public function getNome(): string{
+                            return $this->nome;
+              }
+              public function getCozinheiro(): int{
+                            return $this->cozinheiro;
+              }
+              public function getIdRec(): int {
+                            return $this->idRec;
+              }
+              public function getDtCriacao(): int {
+                            return $this->dt_criacao;
+              }
+              public function getIdCateg(): int {
+                            return $this->id_categ;
+              }
+              public function getModoPreparo(): string {
+                            return $this->modo_preparo;
+              }
+              public function getPorcoes(): int {
+                            return $this->porcoes;
+              }
+              public function getDegustador(): string {
+                            return $this->degustador;
+              }
+              public function getDtDegustacao(): string {
+                            return $this->dt_degustacao;
+              }
+              public function getNotaDegustacao(): int {
+                            return $this->nota_degustacao;
+              }
+              public function getIndInedita(): string {
+                            return $this->ind_inedita;
+              }
+              public function getImagem(): string {
+                            return $this->imagem;
+              }
+              public function getAtivo() : string {
+                            return $this->ativo;
+                           }
 
               
             
