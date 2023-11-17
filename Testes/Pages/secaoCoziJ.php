@@ -48,7 +48,7 @@
           <li class="nav-item"><a href="index1.php" class="nav-link text-dark" aria-current="page">Home</a></li>
           <li class="nav-item"><a href="#" class="nav-link text-dark">Editora</a></li>
           <li class="nav-item"><a href="#" class="nav-link text-dark">Contato</a></li>
-          <li class="nav-item"><a href="Pages/login.php" class="nav-link text-dark active">Acesso</a></li>
+          <li class="nav-item"><a href="login.php" class="nav-link text-dark active">Acesso</a></li>
         </ul>
       </header>
     </div>

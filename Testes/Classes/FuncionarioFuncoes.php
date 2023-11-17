@@ -79,7 +79,6 @@ class FuncionarioFuncoes {
       
       public function validarSenha(String $senhaPura, string $senhaSegura){
             $senhaSeguraAlt = str_replace('"','',$senhaSegura);
-            //var_dump($senhaSeguraAlt);
             $msg = (password_verify($senhaPura, $senhaSeguraAlt)) ? "Senha válida" : "<br>Senha inválida";  
             if ($msg == "<br>Senha inválida") {
                   echo $msg; 
@@ -178,7 +177,7 @@ class FuncionarioFuncoes {
             }
             else if($idCargo == 3)
             {
-                header("Location: ../Pages/secaoDegust.php");
+                header("Location: secaoDegust.php");
                 exit();
             }
             else if($idCargo == 4)
@@ -229,6 +228,7 @@ class FuncionarioFuncoes {
 
             return true;
       }
+
 }
 
 ?>

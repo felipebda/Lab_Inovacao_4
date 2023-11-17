@@ -17,9 +17,7 @@ class Receita {
 
 
               public function __construct(string $nome, int $cozinheiro, int $idRec, string $dt_criacao,
-                                          int $id_categ, string $modo_preparo, ?int $porcoes, ?int $degustador,
-                                          ?string $dt_degustacao, ?float $nota_degustacao, string $ind_inedita,
-                                          string $imagem, int $ativo ){
+                                          int $id_categ, string $modo_preparo, ?int $porcoes, ?int $degustador,?string $dt_degustacao, ?float $nota_degustacao, string $ind_inedita, int $ativo, string $imagem = 'comida.jpg' ){
                          $this->nome = $nome;
                          $this->cozinheiro = $cozinheiro;
                          $this->idRec = $idRec;   
@@ -30,9 +28,9 @@ class Receita {
                          $this->degustador = $degustador;
                          $this->dt_degustacao = $dt_degustacao;
                          $this->nota_degustacao = $nota_degustacao;
-                         $this->ind_inedita = $nota_degustacao;
-                         $this->imagem = $imagem;
-                         $this->ativo = $ativo;             
+                         $this->ind_inedita = $ind_inedita;
+                         $this->ativo = $ativo; 
+                         $this->imagem = $imagem;    
 
               }
 
@@ -72,11 +70,15 @@ class Receita {
               public function getImagem(): string {
                             return $this->imagem;
               }
+
+              public function getImagemDiretorio() : string {
+                            return "../Images/receitas/".$this->imagem;
+                           }
+
+
               public function getAtivo() : string {
                             return $this->ativo;
                            }
-
-              
             
 }
 

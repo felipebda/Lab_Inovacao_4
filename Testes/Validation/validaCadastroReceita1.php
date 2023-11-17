@@ -19,14 +19,13 @@
     $idReceita = 0;
 
     $idReceita = $receitaFuncoes->adicionarId();
-
-
+    
     //APAGAR OU COMENTAR DEPOIS DE COMPLETO
     //echo $idReceita;
 
     //PERSISTENCIA DE DADOS DA NOVA RECEITA PARA PROXIMA PÁGINA
     //Criar um cookie para pegarmos a informação da nova receita nas paginas de cadastro
-    $_SESSION["idReceitaCadastro"] = $idReceita;
+    $_SESSION["idReceitaCadastro"] = $idReceita;  
 
 
     if(!isset($_POST['tipo_cadastro']))

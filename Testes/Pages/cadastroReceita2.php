@@ -22,6 +22,7 @@ $idReceita = 0;
 $dataCriacao = "";
 $idCategoria = 0;
 $porcoesReceita = 0;
+$nota_degustacao = 0;
 $inedita = 0;
 
 //SQL da receita
@@ -38,6 +39,7 @@ $idCozinheiro = $resultadoReceita['cozinheiro'];
 $idReceita = $resultadoReceita['idRec'];
 $dataCriacao = $resultadoReceita['dt_criacao'];
 $idCategoria = $resultadoReceita['id_categ'];
+$nota_degustacao = $resultadoReceita['nota_degustacao'];
 $inedita = $resultadoReceita['ind_inedita'];
 
 /* 
@@ -205,7 +207,7 @@ $buscaTemIngrediente = $queryTemIngediente->fetchAll(PDO::FETCH_ASSOC);
 
             <div class="col-3">
                 <!--//Separar por categoria-->
-                <label for="IdIngregiente">Lista de Categoria</label>
+                <label for="IdIngregiente">Lista de Medidas</label>
                 <select class="form-select" name="idMedida" id="idMedida" size = "5" required>
                     <option disabled selected value> -- escolha uma opção -- </option>
                         <?php 
