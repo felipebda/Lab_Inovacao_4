@@ -62,7 +62,7 @@
             <?php echo "Bem vindo, ". $buscaFuncionario['nome_func']; ?>
         </div>
         <div class= "col-7" ></div>
-        <div class= "col-2"> <?php echo "Cargo: Administrador"; ?></div>
+        <div class= "col-2"> <?php echo "Cargo: Editor"; ?></div>
       </div>
     </div>
     <!--END INTRODUCTION -->
@@ -95,94 +95,16 @@
         </ul>
       </div>
 
-      <!--INSUMO 
-      <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-apple" viewBox="0 0 16 16">
-      <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
-      <path d="M11.182.008C11.148-.03 9.923.023 8.857 1.18c-1.066 1.156-.902 2.482-.878 2.516.024.034 1.52.087 2.475-1.258.955-1.345.762-2.391.728-2.43Zm3.314 11.733c-.048-.096-2.325-1.234-2.113-3.422.212-2.189 1.675-2.789 1.698-2.854.023-.065-.597-.79-1.254-1.157a3.692 3.692 0 0 0-1.563-.434c-.108-.003-.483-.095-1.254.116-.508.139-1.653.589-1.968.607-.316.018-1.256-.522-2.267-.665-.647-.125-1.333.131-1.824.328-.49.196-1.422.754-2.074 2.237-.652 1.482-.311 3.83-.067 4.56.244.729.625 1.924 1.273 2.796.576.984 1.34 1.667 1.659 1.899.319.232 1.219.386 1.843.067.502-.308 1.408-.485 1.766-.472.357.013 1.061.154 1.782.539.571.197 1.111.115 1.652-.105.541-.221 1.324-1.059 2.238-2.758.347-.79.505-1.217.473-1.282Z"/>
-      </svg>
+      <!--Receitas publicadas-->  <!-- consulta de receitas-->
+      <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
+      <svg width="35px" height="35px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" fill="white"/>
+      <path d="M12 6.90909C10.8999 5.50893 9.20406 4.10877 5.00119 4.00602C4.72513 3.99928 4.5 4.22351 4.5 4.49965C4.5 6.54813 4.5 14.3034 4.5 16.597C4.5 16.8731 4.72515 17.09 5.00114 17.099C9.20405 17.2364 10.8999 19.0998 12 20.5M12 6.90909C13.1001 5.50893 14.7959 4.10877 18.9988 4.00602C19.2749 3.99928 19.5 4.21847 19.5 4.49461C19.5 6.78447 19.5 14.3064 19.5 16.5963C19.5 16.8724 19.2749 17.09 18.9989 17.099C14.796 17.2364 13.1001 19.0998 12 20.5M12 6.90909L12 20.5" stroke="#000000" stroke-linejoin="round"/>
+      <path d="M19.2353 6H21.5C21.7761 6 22 6.22386 22 6.5V19.539C22 19.9436 21.5233 20.2124 21.1535 20.0481C20.3584 19.6948 19.0315 19.2632 17.2941 19.2632C14.3529 19.2632 12 21 12 21C12 21 9.64706 19.2632 6.70588 19.2632C4.96845 19.2632 3.64156 19.6948 2.84647 20.0481C2.47668 20.2124 2 19.9436 2 19.539V6.5C2 6.22386 2.22386 6 2.5 6H4.76471" stroke="#000000" stroke-linejoin="round"/>
+      </svg>  
       <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-          Ingredientes
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="cadastroIngrediente.php">Adicionar Ingrediente</a></li>
-          <li><a class="dropdown-item" href="consultaIngrediente.php">Consultar Ingredientes</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Ingrediente</a></li>
-        </ul>
+      <button class="btn btn-primary" type="submit"><a href="livro.php" class="nav-link active">Livro</a> </button>
       </div>
-
-      <!--MEDIDA 
-      <svg id="Layer_1"  viewBox="0 0 24 24" width="35" height="35" xmlns="http://www.w3.org/2000/svg" data-name="Layer 1"><path d="m21 2h-4.54a5.973 5.973 0 0 0 -8.92 0h-4.54a3 3 0 0 0 -3 3v19h24v-19a3 3 0 0 0 -3-3zm-9 0a4 4 0 0 1 4 4v1h-3.382l1.282-2.553-1.79-.894-1.728 3.447h-2.382v-1a4 4 0 0 1 4-4zm10 20h-20v-17a1 1 0 0 1 1-1h3.35a5.976 5.976 0 0 0 -.35 2v3h12v-3a5.976 5.976 0 0 0 -.35-2h3.35a1 1 0 0 1 1 1z"/></svg>      
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-          Medidas
-        </button>
-        <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="cadastroMedida.php">Adicionar Medida</a></li>
-          <li><a class="dropdown-item" href="consultaMedida.php">Consultar Medidas</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="consultaMedida.php">Excluir Medida</a></li>
-        </ul>
-      </div>      
-
-      
-    
-      <!--RECEITA 
-      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M0,6A5.006,5.006,0,0,1,5,1a4.939,4.939,0,0,1,2.713.8,6,6,0,0,1,8.574,0A4.939,4.939,0,0,1,19,1a5,5,0,0,1,1,9.9V18H4V10.9A5.008,5.008,0,0,1,0,6ZM4,20v4H20V20Z"/></svg>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-          Receitas
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="cadastroReceita1.php">Adicionar Receita</a></li>
-          <li><a class="dropdown-item" href="consultaReceita.php">Consultar Receitas</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Receita</a></li>
-        </ul>
-      </div> 
-      
-      <!--CATEGORIA 
-      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M24,22a1,1,0,0,1-1,1H1a1,1,0,0,1,0-2H23A1,1,0,0,1,24,22ZM2,19H22a1,1,0,0,0,1-1V17A11.01,11.01,0,0,0,13,6.051V4.723a2,2,0,1,0-2,0V6.051A11.01,11.01,0,0,0,1,17v1A1,1,0,0,0,2,19Z"/></svg>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-          Categorias
-        </button>
-        <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="cadastroCategoria.php">Adicionar Categoria</a></li>
-          <li><a class="dropdown-item" href="consultaCategoria.php">Consultar Categorias</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="consultaCategoria.php">Excluir Categoria</a></li>
-        </ul>
-      </div> 
-
-      <!--RESTAURANTES 
-      <svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 24 24" width="35" height="35"><path d="M22,10a12.64,12.64,0,0,1-5,9.775V23a1,1,0,0,1-2,0V2A1.9,1.9,0,0,1,16.131.217a2.194,2.194,0,0,1,2.356.459A13.474,13.474,0,0,1,22,10ZM11,0a1,1,0,0,0-1,1V7A3,3,0,0,1,8,9.816V1A1,1,0,0,0,6,1V9.816A3,3,0,0,1,4,7V1A1,1,0,0,0,2,1V7a5.009,5.009,0,0,0,4,4.9V23a1,1,0,0,0,2,0V11.9A5.009,5.009,0,0,0,12,7V1A1,1,0,0,0,11,0Z"/></svg>
-      <div class="btn-group">
-        <button type="button" class="btn btn-primary dropdown-toggle mx-2" data-bs-toggle="dropdown" aria-expanded="false">
-          Restaurantes
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="cadastroRestaurante.php">Adicionar Restaurante</a></li>
-          <li><a class="dropdown-item" href="consultaRestaurante.php">Consultar Restaurantes</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item bg-danger text-light" href="#">Excluir Restaurante</a></li>
-        </ul>
-      </div> 
-    </div>
-
-
-
-    <!-- END INFORMATION DROPBOX -->
-
-
-
-
 
 
     <!--BOOTSTRAP JAVASCRIPT-->
