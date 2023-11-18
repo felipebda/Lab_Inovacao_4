@@ -67,7 +67,6 @@
             <thead>
                 <tr>
                 <th scope="col">Id Categoria</th>
-                <!--<th scope="col">Nome do Categoria</th>-->
                 <th scope="col">Descricao</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
