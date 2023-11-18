@@ -60,9 +60,9 @@ class ReceitaFuncoes
         
     }
 
-    //Funcao alterar descricao do cargo
+    //Alterar nota de degustador
     public function alterar($idFunc, $idRec, $novaNotaDegustacao){
-        $query = "UPDATE receita SET degustador = :d, nota_degustacao = :novaNota WHERE idRec = :idReceita";
+        $query = "UPDATE receita SET degustador = :d, dt_degustacao = CURRENT_TIMESTAMP ,nota_degustacao = :novaNota WHERE idRec = :idReceita";
         $instrucao = $this->pdo->prepare($query);
         $instrucao->bindValue(":d",$idFunc);
         $instrucao->bindValue(":novaNota",$novaNotaDegustacao);
@@ -70,9 +70,9 @@ class ReceitaFuncoes
         $instrucao->execute();
       }
       
-      //finalizara query de update: 
+      //Excluir nota de degustador 
       public function inativar($idRec){
-        $query = "UPDATE receita SET degustador = null, nota_degustacao = 0 WHERE idRec = :idReceita";
+        $query = "UPDATE receita SET degustador = null, dt_degustacao = null, nota_degustacao = 0 WHERE idRec = :idReceita";
         $instrucao = $this->pdo->prepare($query);
         $instrucao->bindValue(":idReceita",intVal($idRec));
         $instrucao->execute();
